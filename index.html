@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="no">
+<html lang="no" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,21 +9,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg:        #eae6de;
-      --bg-card:   #e4e0d8;
-      --bg-deep:   #dbd7cf;
-      --border:    rgba(60, 50, 35, 0.12);
-      --border-md: rgba(60, 50, 35, 0.2);
-      --ink:       #1e1b15;
-      --ink-mid:   #5a5348;
-      --ink-dim:   #9b9288;
-      --ink-faint: #c2bdb5;
-      --radius:    4px;
+    /* ── THEMES ── */
+    [data-theme="light"] {
+      --bg:           #eae6de;
+      --bg-card:      #f0ece3;
+      --bg-card-h:    #ece8de;
+      --bg-mini:      #e6e2d9;
+      --bg-mini-h:    #e0dcd2;
+      --bg-coming:    #eae6de;
+      --surface:      #f5f2ec;
+      --border:       rgba(60,50,35,0.10);
+      --border-md:    rgba(60,50,35,0.18);
+      --ink:          #1e1b15;
+      --ink-mid:      #5a5348;
+      --ink-dim:      #9b9288;
+      --ink-faint:    #c2bdb5;
+      --topbar-bg:    #eae6de;
+      --search-bg:    rgba(60,50,35,0.06);
+      --toast-bg:     #1e1b15;
+      --toast-ink:    #eae6de;
+    }
+    [data-theme="dark"] {
+      --bg:           #18160f;
+      --bg-card:      #201e16;
+      --bg-card-h:    #2a271e;
+      --bg-mini:      #252219;
+      --bg-mini-h:    #2e2b21;
+      --bg-coming:    #1c1a12;
+      --surface:      #25221a;
+      --border:       rgba(220,210,180,0.08);
+      --border-md:    rgba(220,210,180,0.14);
+      --ink:          #ede8dc;
+      --ink-mid:      #a09880;
+      --ink-dim:      #6a6254;
+      --ink-faint:    #3e3a30;
+      --topbar-bg:    #18160f;
+      --search-bg:    rgba(220,210,180,0.07);
+      --toast-bg:     #ede8dc;
+      --toast-ink:    #18160f;
     }
 
+    /* ── RESET ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       background: var(--bg);
       color: var(--ink);
@@ -31,371 +58,430 @@
       font-weight: 300;
       min-height: 100vh;
       -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
     }
-
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ── Top bar ── */
+    /* ── TOPBAR ── */
     .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg);
+      position: sticky; top: 0; z-index: 100;
+      background: var(--topbar-bg);
       border-bottom: 1px solid var(--border);
-      padding: 0 32px;
+      padding: 0 28px;
       height: 48px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 16px;
+      transition: background 0.3s;
     }
-
-    .topbar-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
+    .topbar-left { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .topbar-logo {
-      width: 26px;
-      height: 26px;
+      width: 26px; height: 26px;
       background: var(--ink);
       border-radius: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
       color: var(--bg);
       font-family: 'Courier Prime', monospace;
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 12px; font-weight: 700;
+      transition: background 0.3s, color 0.3s;
     }
+    .topbar-title { font-family: 'Courier Prime', monospace; font-size: 13px; color: var(--ink); }
+    .topbar-sep   { font-family: 'Courier Prime', monospace; font-size: 13px; color: var(--ink-faint); }
+    .topbar-domain{ font-family: 'Courier Prime', monospace; font-size: 12px; color: var(--ink-dim); }
 
-    .topbar-title {
-      font-family: 'Courier Prime', monospace;
-      font-size: 13px;
-      color: var(--ink);
+    /* Search */
+    .topbar-search {
+      flex: 1;
+      max-width: 280px;
+      position: relative;
     }
-
-    .topbar-sep {
-      color: var(--ink-faint);
-      font-family: 'Courier Prime', monospace;
-      font-size: 13px;
-    }
-
-    .topbar-domain {
-      font-family: 'Courier Prime', monospace;
-      font-size: 12px;
-      color: var(--ink-dim);
-    }
-
-    .topbar-right {
+    .topbar-search input {
+      width: 100%;
+      background: var(--search-bg);
+      border: 1px solid var(--border-md);
+      border-radius: 4px;
+      padding: 5px 10px 5px 28px;
       font-family: 'Courier Prime', monospace;
       font-size: 11px;
-      color: var(--ink-dim);
-      display: flex;
-      align-items: center;
-      gap: 7px;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s, background 0.3s;
+    }
+    .topbar-search input::placeholder { color: var(--ink-dim); }
+    .topbar-search input:focus { border-color: var(--border-md); background: var(--search-bg); }
+    .topbar-search .search-icon {
+      position: absolute; left: 9px; top: 50%; transform: translateY(-50%);
+      font-size: 11px; color: var(--ink-dim); pointer-events: none;
     }
 
-    .status-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #6a9e6a;
-      display: inline-block;
-    }
+    .topbar-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
 
-    /* ── Layout ── */
-    .page {
-      position: relative;
-      z-index: 1;
-      max-width: 1060px;
-      margin: 0 auto;
-      padding: 60px 32px 100px;
-    }
-
-    /* ── Hero ── */
-    .hero {
-      margin-bottom: 56px;
-      animation: fadeUp 0.5s ease both;
-    }
-
-    .hero-eyebrow {
+    /* Last visited */
+    .last-visited {
       font-family: 'Courier Prime', monospace;
       font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
       color: var(--ink-dim);
-      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 5px;
+      max-width: 180px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .last-visited-label { color: var(--ink-faint); flex-shrink: 0; }
+
+    /* Status */
+    .status-area { display: flex; align-items: center; gap: 7px; font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--ink-dim); }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #6a9e6a; display: inline-block; animation: pulse-dot 2.5s ease-in-out infinite; }
+
+    /* Dark mode toggle */
+    .theme-toggle {
+      width: 28px; height: 28px;
+      border: 1px solid var(--border-md);
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px;
+      color: var(--ink-dim);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .theme-toggle:hover { border-color: var(--ink-dim); color: var(--ink); }
+
+    /* ── LAYOUT ── */
+    .page {
+      position: relative; z-index: 1;
+      max-width: 1080px; margin: 0 auto;
+      padding: 56px 28px 100px;
     }
 
+    /* ── HERO ── */
+    .hero { margin-bottom: 48px; animation: fadeUp 0.5s ease both; }
+    .hero-eyebrow {
+      font-family: 'Courier Prime', monospace; font-size: 10px;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--ink-dim); margin-bottom: 14px;
+    }
     .hero h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(52px, 7vw, 84px);
-      font-weight: 400;
-      line-height: 0.95;
-      letter-spacing: -1px;
-      color: var(--ink);
-      margin-bottom: 4px;
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 400; line-height: 0.95; letter-spacing: -1px;
+      color: var(--ink); margin-bottom: 4px;
     }
+    .hero h1 em { font-style: italic; font-weight: 300; color: var(--ink-mid); }
+    .hero-sub { font-size: 13px; color: var(--ink-mid); max-width: 400px; line-height: 1.7; font-weight: 300; margin-top: 18px; }
 
-    .hero h1 em {
-      font-style: italic;
-      font-weight: 300;
-      color: var(--ink-mid);
-    }
-
-    .hero-sub {
-      font-size: 13.5px;
-      color: var(--ink-mid);
-      max-width: 420px;
-      line-height: 1.7;
-      font-weight: 300;
-      margin-top: 20px;
-    }
-
-    /* ── Section label ── */
-    .section-label {
-      font-family: 'Courier Prime', monospace;
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--ink-dim);
+    /* ── FILTER + SEARCH ROW ── */
+    .filter-row {
+      display: flex; align-items: center; gap: 8px;
       margin-bottom: 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-md);
+      flex-wrap: wrap;
+      animation: fadeUp 0.5s 0.05s ease both;
+    }
+    .filter-btn {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-dim);
+      background: transparent;
+      border: 1px solid var(--border-md);
+      border-radius: 3px;
+      padding: 4px 10px;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+    .filter-btn:hover { color: var(--ink); border-color: var(--ink-mid); }
+    .filter-btn.active {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-family: 'Courier Prime', monospace; font-size: 10px;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--ink-dim); margin-bottom: 0;
+      display: flex; align-items: center; gap: 12px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border-md);
     }
 
-    /* ── Agents grid ── */
+    /* ── AGENTS GRID ── */
     .agents-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       border: 1px solid var(--border-md);
       border-top: none;
-      margin-bottom: 0;
       animation: fadeUp 0.5s 0.1s ease both;
     }
-
-    @media (max-width: 900px) {
-      .agents-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 500px) {
-      .agents-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 900px) { .agents-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 500px) { .agents-grid { grid-template-columns: 1fr; } }
 
     .agent-col {
-      display: flex;
-      flex-direction: column;
+      display: flex; flex-direction: column;
       border-right: 1px solid var(--border-md);
     }
-
     .agent-col:last-child { border-right: none; }
+    .agent-col.hidden { display: none; }
 
-    /* ── Agent card ── */
+    /* ── AGENT CARD ── */
     .agent-card {
-      background: #f0ece3;
-      padding: 28px 24px 22px;
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
+      background: var(--bg-card);
+      padding: 24px 22px 20px;
+      display: flex; flex-direction: column;
+      cursor: pointer; text-decoration: none; color: inherit;
       transition: background 0.18s;
       flex: 1;
+      position: relative;
+      overflow: hidden;
     }
+    .agent-card:hover { background: var(--bg-card-h); }
+    .agent-card + .agent-card { border-top: 1px solid var(--border-md); }
 
-    .agent-card:hover { background: #ede9df; }
-
-    .agent-card + .agent-card {
-      border-top: 1px solid var(--border-md);
+    /* Category color stripe */
+    .agent-card::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px;
     }
+    .agent-col[data-cat="marketing"] .agent-card::before { background: #b87a52; }
+    .agent-col[data-cat="ehandel"]   .agent-card::before { background: #527ab8; }
+    .agent-col[data-cat="logistikk"] .agent-card::before { background: #52a870; }
+    .agent-col[data-cat="dokumentasjon"] .agent-card::before { background: #8b7ab8; }
 
+    /* Card header row */
+    .card-top {
+      display: flex; align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 18px;
+    }
     .card-num {
       font-family: 'Courier Prime', monospace;
-      font-size: 10px;
-      color: var(--ink-faint);
-      margin-bottom: 20px;
+      font-size: 10px; color: var(--ink-faint);
+    }
+    .card-badges { display: flex; gap: 5px; align-items: center; }
+
+    /* Ny-badge */
+    .badge-new {
+      font-family: 'Courier Prime', monospace;
+      font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #52a870; background: rgba(82,168,112,0.12);
+      border: 1px solid rgba(82,168,112,0.3);
+      padding: 2px 6px; border-radius: 2px;
+    }
+
+    /* Complexity badge */
+    .badge-complexity {
+      font-family: 'Courier Prime', monospace;
+      font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-dim);
+      border: 1px solid var(--border-md);
+      padding: 2px 6px; border-radius: 2px;
+    }
+
+    /* Pulse dot on card */
+    .card-pulse {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #6a9e6a;
+      animation: pulse-dot 2.5s ease-in-out infinite;
+      flex-shrink: 0;
     }
 
     .card-tag {
       font-family: 'Courier Prime', monospace;
-      font-size: 9.5px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--ink-dim);
-      margin-bottom: 9px;
+      font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-dim); margin-bottom: 7px;
     }
-
     .card-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 25px;
-      font-weight: 500;
-      line-height: 1.1;
-      color: var(--ink);
-      margin-bottom: 11px;
+      font-size: 23px; font-weight: 500; line-height: 1.1;
+      color: var(--ink); margin-bottom: 10px;
     }
-
     .card-desc {
-      font-size: 12.5px;
-      color: var(--ink-mid);
-      line-height: 1.65;
-      font-weight: 300;
-      flex: 1;
+      font-size: 12px; color: var(--ink-mid);
+      line-height: 1.65; font-weight: 300; flex: 1;
     }
 
+    /* Last used */
+    .card-meta {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px; color: var(--ink-faint);
+      margin-top: 10px;
+    }
+
+    /* Steps accordion */
+    .card-steps {
+      margin-top: 14px;
+      border-top: 1px solid var(--border);
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.35s ease, opacity 0.3s ease;
+      opacity: 0;
+    }
+    .card-steps.open { max-height: 200px; opacity: 1; }
+    .steps-inner { padding-top: 12px; display: flex; flex-direction: column; gap: 7px; }
+    .step-row {
+      display: flex; align-items: flex-start; gap: 9px;
+    }
+    .step-num {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px; color: var(--ink-faint);
+      min-width: 14px; padding-top: 1px;
+    }
+    .step-text { font-size: 11px; color: var(--ink-dim); line-height: 1.5; font-weight: 300; }
+
+    /* Card footer */
     .card-footer {
-      margin-top: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-top: 13px;
+      margin-top: 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 12px;
       border-top: 1px solid var(--border);
     }
-
+    .card-footer-left { display: flex; align-items: center; gap: 10px; }
     .card-link-label {
       font-family: 'Courier Prime', monospace;
-      font-size: 10px;
-      color: var(--ink-dim);
-      letter-spacing: 0.05em;
+      font-size: 10px; color: var(--ink-dim); letter-spacing: 0.05em;
     }
-
     .card-arrow {
-      font-size: 13px;
-      color: var(--ink-mid);
+      font-size: 13px; color: var(--ink-mid);
       transition: transform 0.2s;
     }
+    .agent-card:hover .card-arrow { transform: translate(2px,-2px); }
 
-    .agent-card:hover .card-arrow { transform: translate(2px, -2px); }
+    /* Steps toggle button */
+    .steps-toggle {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px; color: var(--ink-dim);
+      background: none; border: 1px solid var(--border-md);
+      border-radius: 2px; padding: 2px 7px;
+      cursor: pointer; letter-spacing: 0.07em;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+    .steps-toggle:hover { color: var(--ink); border-color: var(--ink-mid); }
 
-    /* Mini GPT card */
+    /* Copy link button */
+    .copy-btn {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px; color: var(--ink-dim);
+      background: none; border: 1px solid var(--border-md);
+      border-radius: 2px; padding: 2px 7px;
+      cursor: pointer; letter-spacing: 0.07em;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .copy-btn:hover { color: var(--ink); border-color: var(--ink-mid); }
+
+    /* ── MINI CARD ── */
     .agent-card.mini {
-      padding: 14px 24px;
-      flex-direction: row;
-      align-items: center;
-      gap: 12px;
-      background: #e8e4db;
-      flex: 0;
+      padding: 12px 22px; flex-direction: row; align-items: center;
+      gap: 12px; background: var(--bg-mini); flex: 0;
     }
-
-    .agent-card.mini:hover { background: #e2ddd4; }
-
+    .agent-card.mini:hover { background: var(--bg-mini-h); }
     .mini-body { flex: 1; }
-
-    .mini .card-title {
-      font-size: 15px;
-      margin-bottom: 2px;
-    }
-
-    .mini .card-desc { font-size: 11px; }
-
+    .mini .card-title { font-size: 14px; margin-bottom: 2px; }
+    .mini .card-desc  { font-size: 11px; }
     .mini-badge {
       font-family: 'Courier Prime', monospace;
-      font-size: 9px;
-      color: var(--ink-dim);
-      letter-spacing: 0.08em;
-      background: var(--bg);
-      border: 1px solid var(--border-md);
-      padding: 3px 8px;
-      border-radius: 2px;
-      flex-shrink: 0;
+      font-size: 9px; color: var(--ink-dim); letter-spacing: 0.08em;
+      background: var(--bg); border: 1px solid var(--border-md);
+      padding: 3px 8px; border-radius: 2px; flex-shrink: 0;
+      transition: background 0.3s;
     }
 
-    /* ── Coming soon ── */
-    .coming-section {
-      animation: fadeUp 0.5s 0.2s ease both;
-      margin-top: 40px;
-    }
-
+    /* ── COMING SOON ── */
+    .coming-section { animation: fadeUp 0.5s 0.2s ease both; margin-top: 40px; }
     .coming-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      border: 1px solid var(--border-md);
-      border-top: none;
+      display: grid; grid-template-columns: repeat(4,1fr);
+      border: 1px solid var(--border-md); border-top: none;
     }
-
-    @media (max-width: 860px) { .coming-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 860px) { .coming-grid { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 480px) { .coming-grid { grid-template-columns: 1fr; } }
-
     .coming-card {
-      padding: 20px 18px 18px;
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      opacity: 0.55;
+      padding: 18px 16px 16px; display: flex; flex-direction: column; gap: 6px;
+      opacity: 0.5;
       border-right: 1px solid var(--border-md);
       border-bottom: 1px solid var(--border-md);
+      background: var(--bg-coming);
       transition: opacity 0.18s, background 0.18s;
     }
-
-    .coming-card:hover { opacity: 0.8; background: var(--bg-card); }
-
+    .coming-card:hover { opacity: 0.75; background: var(--bg-card); }
     .coming-card:nth-child(4n) { border-right: none; }
-
     .coming-pill {
       font-family: 'Courier Prime', monospace;
-      font-size: 8.5px;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: var(--ink-dim);
-      border: 1px solid var(--border-md);
-      padding: 2px 7px;
-      display: inline-block;
-      width: fit-content;
-      border-radius: 2px;
-      margin-bottom: 4px;
+      font-size: 8px; letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--ink-dim); border: 1px solid var(--border-md);
+      padding: 2px 7px; display: inline-block; width: fit-content;
+      border-radius: 2px; margin-bottom: 3px;
     }
-
     .coming-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 500;
-      color: var(--ink-mid);
-      line-height: 1.15;
+      font-size: 17px; font-weight: 500; color: var(--ink-mid); line-height: 1.15;
     }
+    .coming-desc { font-size: 11px; color: var(--ink-dim); line-height: 1.6; font-weight: 300; }
 
-    .coming-desc {
-      font-size: 11px;
-      color: var(--ink-dim);
-      line-height: 1.6;
-      font-weight: 300;
+    /* ── NO RESULTS ── */
+    .no-results {
+      display: none;
+      font-family: 'Courier Prime', monospace;
+      font-size: 12px; color: var(--ink-dim);
+      padding: 40px 0; text-align: center;
+      border: 1px solid var(--border-md); border-top: none;
     }
+    .no-results.visible { display: block; }
 
-    /* ── Footer ── */
+    /* ── FOOTER ── */
     footer {
-      margin-top: 52px;
-      padding-top: 18px;
+      margin-top: 48px; padding-top: 16px;
       border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       animation: fadeUp 0.5s 0.3s ease both;
     }
+    footer p   { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-dim); letter-spacing: 0.04em; }
+    footer span{ font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); }
 
-    footer p {
+    /* Keyboard hint */
+    .kbd-hint {
       font-family: 'Courier Prime', monospace;
-      font-size: 10.5px;
+      font-size: 9px; color: var(--ink-faint);
+      display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    }
+    .kbd {
+      display: inline-block;
+      border: 1px solid var(--border-md);
+      border-radius: 2px;
+      padding: 1px 5px;
+      font-size: 9px;
       color: var(--ink-dim);
-      letter-spacing: 0.04em;
     }
 
-    footer span {
-      font-family: 'Courier Prime', monospace;
-      font-size: 10.5px;
-      color: var(--ink-faint);
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(10px);
+      background: var(--toast-bg); color: var(--toast-ink);
+      font-family: 'Courier Prime', monospace; font-size: 11px;
+      padding: 8px 18px; border-radius: 4px;
+      opacity: 0; transition: opacity 0.2s, transform 0.2s;
+      pointer-events: none; z-index: 999; white-space: nowrap;
     }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(10px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-dot {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(0.7); }
     }
   </style>
 </head>
@@ -409,9 +495,22 @@
       <span class="topbar-sep">—</span>
       <span class="topbar-domain">novooi.com</span>
     </div>
+
+    <div class="topbar-search">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="searchInput" placeholder="Søk etter agent..." autocomplete="off" />
+    </div>
+
     <div class="topbar-right">
-      <span class="status-dot"></span>
-      Alle agenter aktive
+      <div class="last-visited" id="lastVisited" style="display:none;">
+        <span class="last-visited-label">sist:</span>
+        <span id="lastVisitedName">—</span>
+      </div>
+      <div class="status-area">
+        <span class="status-dot"></span>
+        <span>4 aktive</span>
+      </div>
+      <button class="theme-toggle" id="themeToggle" title="Bytt tema">☽</button>
     </div>
   </div>
 
@@ -424,35 +523,92 @@
       <p class="hero-sub">En samlet oversikt over alle AI-agentene teamet bruker daglig. Klikk deg inn og kom i gang.</p>
     </div>
 
-    <!-- Active -->
-    <div class="section-label">Aktive agenter</div>
-    <div class="agents-grid">
+    <!-- Filter row -->
+    <div class="filter-row">
+      <button class="filter-btn active" data-filter="alle">Alle</button>
+      <button class="filter-btn" data-filter="marketing">Markedsføring</button>
+      <button class="filter-btn" data-filter="ehandel">E-handel</button>
+      <button class="filter-btn" data-filter="logistikk">Logistikk</button>
+      <button class="filter-btn" data-filter="dokumentasjon">Dokumentasjon</button>
+    </div>
 
-      <div class="agent-col">
-        <a class="agent-card" href="https://mekkis2002.github.io/markedsf-ringsagent/" target="_blank" rel="noopener">
-          <div class="card-num">01</div>
+    <!-- Active agents label -->
+    <div class="section-label" style="margin-top:0;">Aktive agenter</div>
+    <div class="agents-grid" id="agentsGrid">
+
+      <!-- 01 Marketing -->
+      <div class="agent-col" data-cat="marketing" data-title="Marketing Agent">
+        <a class="agent-card"
+           href="https://mekkis2002.github.io/markedsf-ringsagent/"
+           data-name="Marketing Agent"
+           target="_blank" rel="noopener"
+           onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">01</span>
+            <div class="card-badges">
+              <span class="badge-complexity">Middels</span>
+              <span class="card-pulse"></span>
+            </div>
+          </div>
           <div class="card-tag">Innhold & markedsføring</div>
           <div class="card-title">Marketing Agent</div>
           <div class="card-desc">Generer annonsetekster, produktbeskrivelser, nyhetsbrev og kampanjemateriell med AI — tilpasset din tone of voice.</div>
+          <div class="card-meta" id="meta-1">—</div>
+          <div class="card-steps" id="steps-1">
+            <div class="steps-inner">
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Velg innholdstype og målgruppe</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">AI genererer utkast basert på produktinfo</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Rediger, godkjenn og kopier til CMS</span></div>
+            </div>
+          </div>
           <div class="card-footer">
-            <span class="card-link-label">Åpne agent</span>
+            <div class="card-footer-left">
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-1',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://mekkis2002.github.io/markedsf-ringsagent/')">Kopier lenke</button>
+            </div>
             <span class="card-arrow">↗</span>
           </div>
         </a>
       </div>
 
-      <div class="agent-col">
-        <a class="agent-card" href="https://mekkis2002.github.io/woocommerce-import/" target="_blank" rel="noopener">
-          <div class="card-num">02</div>
+      <!-- 02 WooCommerce -->
+      <div class="agent-col" data-cat="ehandel" data-title="WooCommerce CSV Import">
+        <a class="agent-card"
+           href="https://mekkis2002.github.io/woocommerce-import/"
+           data-name="WooCommerce CSV Import"
+           target="_blank" rel="noopener"
+           onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">02</span>
+            <div class="card-badges">
+              <span class="badge-complexity">Avansert</span>
+              <span class="card-pulse"></span>
+            </div>
+          </div>
           <div class="card-tag">E-handel</div>
           <div class="card-title">WooCommerce CSV Import</div>
           <div class="card-desc">Importer produkter til WooCommerce via ferdig formatert CSV. Last opp fil, kontroller og eksporter klart til import.</div>
+          <div class="card-meta" id="meta-2">—</div>
+          <div class="card-steps" id="steps-2">
+            <div class="steps-inner">
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Last opp Numbers-fil eksportert som CSV</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Verktøyet mapper kolonner til WooCommerce-format</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Last ned ferdig CSV og importer i WooCommerce</span></div>
+            </div>
+          </div>
           <div class="card-footer">
-            <span class="card-link-label">Åpne verktøy</span>
+            <div class="card-footer-left">
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-2',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://mekkis2002.github.io/woocommerce-import/')">Kopier lenke</button>
+            </div>
             <span class="card-arrow">↗</span>
           </div>
         </a>
-        <a class="agent-card mini" href="https://chatgpt.com/g/g-68b69eca01188191a9902fe7ee9fd57d-woocommerce-product-import-bot" target="_blank" rel="noopener">
+        <a class="agent-card mini"
+           href="https://chatgpt.com/g/g-68b69eca01188191a9902fe7ee9fd57d-woocommerce-product-import-bot"
+           data-name="GPT Import Bot"
+           target="_blank" rel="noopener"
+           onclick="trackVisit(this)">
           <div class="mini-body">
             <div class="card-title">GPT Import Bot</div>
             <div class="card-desc">ChatGPT-agent for produktimport</div>
@@ -461,97 +617,234 @@
         </a>
       </div>
 
-      <div class="agent-col">
-        <a class="agent-card" href="https://mekkis2002.github.io/leverand-r-pipeline/" target="_blank" rel="noopener">
-          <div class="card-num">03</div>
+      <!-- 03 Vendor Pipeline -->
+      <div class="agent-col" data-cat="logistikk" data-title="Vendor Preorder Pipeline">
+        <a class="agent-card"
+           href="https://mekkis2002.github.io/leverand-r-pipeline/"
+           data-name="Vendor Preorder Pipeline"
+           target="_blank" rel="noopener"
+           onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">03</span>
+            <div class="card-badges">
+              <span class="badge-complexity">Avansert</span>
+              <span class="card-pulse"></span>
+            </div>
+          </div>
           <div class="card-tag">Innkjøp & logistikk</div>
           <div class="card-title">Vendor Preorder Pipeline</div>
           <div class="card-desc">Administrer forhåndsbestillinger fra leverandører. Hold styr på pipeline, frister og leverandørkommunikasjon.</div>
+          <div class="card-meta" id="meta-3">—</div>
+          <div class="card-steps" id="steps-3">
+            <div class="steps-inner">
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Last opp ordrefil fra Numbers</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Produkter grupperes per leverandør automatisk</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Send e-post via Make.com og logg til Notion</span></div>
+            </div>
+          </div>
           <div class="card-footer">
-            <span class="card-link-label">Åpne pipeline</span>
+            <div class="card-footer-left">
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-3',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://mekkis2002.github.io/leverand-r-pipeline/')">Kopier lenke</button>
+            </div>
             <span class="card-arrow">↗</span>
           </div>
         </a>
       </div>
 
-      <div class="agent-col">
-        <a class="agent-card" href="https://script.google.com/a/macros/novooi.com/s/AKfycbz6F6yptonPYpuI2hUpBnoxdwlhu7dpeyiGGMIpAQdXwhKtuxmEl9S5rKLbtkufIG6T/exec" target="_blank" rel="noopener">
-          <div class="card-num">04</div>
+      <!-- 04 BIM & CAD -->
+      <div class="agent-col" data-cat="dokumentasjon" data-title="BIM & CAD Arkivering">
+        <a class="agent-card"
+           href="https://script.google.com/a/macros/novooi.com/s/AKfycbz6F6yptonPYpuI2hUpBnoxdwlhu7dpeyiGGMIpAQdXwhKtuxmEl9S5rKLbtkufIG6T/exec"
+           data-name="BIM & CAD Arkivering"
+           target="_blank" rel="noopener"
+           onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">04</span>
+            <div class="card-badges">
+              <span class="badge-new">Ny</span>
+              <span class="badge-complexity">Middels</span>
+              <span class="card-pulse"></span>
+            </div>
+          </div>
           <div class="card-tag">Teknisk dokumentasjon</div>
           <div class="card-title">BIM & CAD Arkivering</div>
           <div class="card-desc">Lim inn en URL til en produsentside. Agenten finner BIM-filer, CAD-tegninger og 3D-modeller, matcher mot Novooi og laster opp til Google Drive.</div>
+          <div class="card-meta" id="meta-4">—</div>
+          <div class="card-steps" id="steps-4">
+            <div class="steps-inner">
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Claude leser HTML og finner alle nedlastbare tekniske filer</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Produktnavn sjekkes mot WooCommerce API på Novooi</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Filer lagres i Drive under riktig produkt-ID eller Missing ID</span></div>
+            </div>
+          </div>
           <div class="card-footer">
-            <span class="card-link-label">Åpne agent</span>
+            <div class="card-footer-left">
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-4',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://script.google.com/a/macros/novooi.com/s/AKfycbz6F6yptonPYpuI2hUpBnoxdwlhu7dpeyiGGMIpAQdXwhKtuxmEl9S5rKLbtkufIG6T/exec')">Kopier lenke</button>
+            </div>
             <span class="card-arrow">↗</span>
           </div>
         </a>
       </div>
 
-    </div>
+    </div><!-- /agents-grid -->
+
+    <div class="no-results" id="noResults">Ingen agenter matcher søket.</div>
 
     <!-- Coming soon -->
     <div class="coming-section">
       <div class="section-label">Kommer snart</div>
       <div class="coming-grid">
-
-        <div class="coming-card">
-          <div class="coming-pill">Coming soon</div>
-          <div class="coming-title">Sales Report Agent</div>
-          <div class="coming-desc">Automatisk generering av salgsrapporter og ukentlige oppsummeringer fra ordredata.</div>
-        </div>
-
-        <div class="coming-card">
-          <div class="coming-pill">Coming soon</div>
-          <div class="coming-title">E-post Assistent</div>
-          <div class="coming-desc">Skriv og svar på kundehenvendelser raskere med AI-støttede maler tilpasset merkevaren.</div>
-        </div>
-
-        <div class="coming-card">
-          <div class="coming-pill">Coming soon</div>
-          <div class="coming-title">Produkt SEO Agent</div>
-          <div class="coming-desc">Optimaliser produkttitler og metabeskrivelser for søkemotorer automatisk.</div>
-        </div>
-
-        <div class="coming-card">
-          <div class="coming-pill">Coming soon</div>
-          <div class="coming-title">Prisovervåking</div>
-          <div class="coming-desc">Hold øye med konkurrenters priser og få varsler ved endringer i markedet.</div>
-        </div>
-
-        <div class="coming-card">
-          <div class="coming-pill">Coming soon</div>
-          <div class="coming-title">Oversettelsesagent</div>
-          <div class="coming-desc">Oversett produktkatalog og innhold til norsk, engelsk og svensk med ett klikk.</div>
-        </div>
-
-        <div class="coming-card">
-          <div class="coming-pill">Coming soon</div>
-          <div class="coming-title">Retur & Reklamasjon</div>
-          <div class="coming-desc">Håndter returforespørsler og reklamasjoner med AI-assistert flyt.</div>
-        </div>
-
-        <div class="coming-card">
-          <div class="coming-pill">Coming soon</div>
-          <div class="coming-title">Bildeoptimering</div>
-          <div class="coming-desc">Automatisk beskjæring, komprimering og navngivning av produktbilder for nett.</div>
-        </div>
-
-        <div class="coming-card">
-          <div class="coming-pill">Coming soon</div>
-          <div class="coming-title">Lager&shy;status Dashboard</div>
-          <div class="coming-desc">Sanntidsoversikt over lagernivåer med anbefalinger for påfyll og bestilling.</div>
-        </div>
-
+        <div class="coming-card"><div class="coming-pill">Coming soon</div><div class="coming-title">Sales Report Agent</div><div class="coming-desc">Automatisk generering av salgsrapporter og ukentlige oppsummeringer fra ordredata.</div></div>
+        <div class="coming-card"><div class="coming-pill">Coming soon</div><div class="coming-title">E-post Assistent</div><div class="coming-desc">Skriv og svar på kundehenvendelser raskere med AI-støttede maler tilpasset merkevaren.</div></div>
+        <div class="coming-card"><div class="coming-pill">Coming soon</div><div class="coming-title">Produkt SEO Agent</div><div class="coming-desc">Optimaliser produkttitler og metabeskrivelser for søkemotorer automatisk.</div></div>
+        <div class="coming-card"><div class="coming-pill">Coming soon</div><div class="coming-title">Prisovervåking</div><div class="coming-desc">Hold øye med konkurrenters priser og få varsler ved endringer i markedet.</div></div>
+        <div class="coming-card"><div class="coming-pill">Coming soon</div><div class="coming-title">Oversettelsesagent</div><div class="coming-desc">Oversett produktkatalog og innhold til norsk, engelsk og svensk med ett klikk.</div></div>
+        <div class="coming-card"><div class="coming-pill">Coming soon</div><div class="coming-title">Retur & Reklamasjon</div><div class="coming-desc">Håndter returforespørsler og reklamasjoner med AI-assistert flyt.</div></div>
+        <div class="coming-card"><div class="coming-pill">Coming soon</div><div class="coming-title">Bildeoptimering</div><div class="coming-desc">Automatisk beskjæring, komprimering og navngivning av produktbilder for nett.</div></div>
+        <div class="coming-card"><div class="coming-pill">Coming soon</div><div class="coming-title">Lagerstatus Dashboard</div><div class="coming-desc">Sanntidsoversikt over lagernivåer med anbefalinger for påfyll og bestilling.</div></div>
       </div>
     </div>
 
     <!-- Footer -->
     <footer>
       <p>Novooi — Internt verktøy</p>
+      <div class="kbd-hint">
+        <span>Snarveier:</span>
+        <span><span class="kbd">1</span>–<span class="kbd">4</span> åpne agent</span>
+        <span><span class="kbd">/</span> søk</span>
+        <span><span class="kbd">D</span> mørk modus</span>
+      </div>
       <span>agent-hub · 2026</span>
     </footer>
 
-  </div>
+  </div><!-- /page -->
 
+  <!-- Toast -->
+  <div class="toast" id="toast">Lenke kopiert!</div>
+
+  <script>
+    /* ── THEME TOGGLE ── */
+    const html = document.documentElement;
+    const btn  = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('nh-theme') || 'light';
+    html.setAttribute('data-theme', saved);
+    btn.textContent = saved === 'dark' ? '☀' : '☽';
+    btn.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      btn.textContent = next === 'dark' ? '☀' : '☽';
+      localStorage.setItem('nh-theme', next);
+    });
+
+    /* ── LAST VISITED ── */
+    function trackVisit(el) {
+      const name = el.getAttribute('data-name');
+      if (!name) return;
+      const data = { name, time: Date.now() };
+      localStorage.setItem('nh-last', JSON.stringify(data));
+    }
+    function loadLastVisited() {
+      try {
+        const raw = localStorage.getItem('nh-last');
+        if (!raw) return;
+        const { name, time } = JSON.parse(raw);
+        const mins = Math.floor((Date.now() - time) / 60000);
+        const label = mins < 1 ? 'akkurat nå' : mins < 60 ? mins + 'm siden' : Math.floor(mins/60) + 't siden';
+        document.getElementById('lastVisitedName').textContent = name + ' · ' + label;
+        document.getElementById('lastVisited').style.display = 'flex';
+      } catch(e) {}
+    }
+    loadLastVisited();
+
+    /* ── LAST USED PER CARD ── */
+    function loadCardMeta() {
+      const cards = document.querySelectorAll('.agent-card[data-name]');
+      cards.forEach(c => {
+        try {
+          const raw = localStorage.getItem('nh-visited-' + c.getAttribute('data-name'));
+          if (!raw) return;
+          const { time } = JSON.parse(raw);
+          const mins = Math.floor((Date.now() - time) / 60000);
+          const label = mins < 1 ? 'akkurat nå' : mins < 60 ? mins + 'm siden' : Math.floor(mins/60) + 't siden';
+          const meta = c.querySelector('.card-meta');
+          if (meta) meta.textContent = 'Sist brukt: ' + label;
+        } catch(e) {}
+      });
+    }
+    document.querySelectorAll('.agent-card[data-name]').forEach(c => {
+      c.addEventListener('click', () => {
+        const name = c.getAttribute('data-name');
+        localStorage.setItem('nh-visited-' + name, JSON.stringify({ time: Date.now() }));
+      });
+    });
+    loadCardMeta();
+
+    /* ── STEPS TOGGLE ── */
+    function toggleSteps(e, id, btn) {
+      e.preventDefault(); e.stopPropagation();
+      const el = document.getElementById(id);
+      const open = el.classList.toggle('open');
+      btn.textContent = open ? 'Skjul steg' : 'Vis steg';
+    }
+
+    /* ── COPY LINK ── */
+    function copyLink(e, url) {
+      e.preventDefault(); e.stopPropagation();
+      navigator.clipboard.writeText(url).then(() => showToast('Lenke kopiert!'));
+    }
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2200);
+    }
+
+    /* ── CATEGORY FILTER ── */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.getAttribute('data-filter');
+        filterAgents(f, document.getElementById('searchInput').value.trim().toLowerCase());
+      });
+    });
+
+    /* ── SEARCH ── */
+    document.getElementById('searchInput').addEventListener('input', e => {
+      const f = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+      filterAgents(f, e.target.value.trim().toLowerCase());
+    });
+
+    function filterAgents(cat, query) {
+      const cols = document.querySelectorAll('.agent-col');
+      let visible = 0;
+      cols.forEach(col => {
+        const colCat   = col.getAttribute('data-cat');
+        const colTitle = (col.getAttribute('data-title') || '').toLowerCase();
+        const catMatch  = cat === 'alle' || colCat === cat;
+        const qryMatch  = !query || colTitle.includes(query);
+        if (catMatch && qryMatch) { col.classList.remove('hidden'); visible++; }
+        else                      { col.classList.add('hidden'); }
+      });
+      document.getElementById('noResults').classList.toggle('visible', visible === 0);
+    }
+
+    /* ── KEYBOARD SHORTCUTS ── */
+    const agentLinks = [
+      'https://mekkis2002.github.io/markedsf-ringsagent/',
+      'https://mekkis2002.github.io/woocommerce-import/',
+      'https://mekkis2002.github.io/leverand-r-pipeline/',
+      'https://script.google.com/a/macros/novooi.com/s/AKfycbz6F6yptonPYpuI2hUpBnoxdwlhu7dpeyiGGMIpAQdXwhKtuxmEl9S5rKLbtkufIG6T/exec'
+    ];
+    document.addEventListener('keydown', e => {
+      if (document.activeElement.tagName === 'INPUT') return;
+      if (e.key === '/' ) { e.preventDefault(); document.getElementById('searchInput').focus(); }
+      if (e.key === 'd' || e.key === 'D') { document.getElementById('themeToggle').click(); }
+      const n = parseInt(e.key);
+      if (n >= 1 && n <= 4) window.open(agentLinks[n-1], '_blank');
+    });
+  </script>
 </body>
 </html>
