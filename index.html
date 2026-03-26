@@ -18,8 +18,9 @@
       --bg-mini-h:    #e0dcd2;
       --bg-coming:    #eae6de;
       --surface:      #f5f2ec;
-      --border:       rgba(60,50,35,0.10);
-      --border-md:    rgba(60,50,35,0.18);
+      --border:       rgba(60,50,35,0.09);
+      --border-md:    rgba(60,50,35,0.15);
+      --border-col:   rgba(60,50,35,0.22);
       --ink:          #1e1b15;
       --ink-mid:      #5a5348;
       --ink-dim:      #9b9288;
@@ -124,33 +125,24 @@
 
     .topbar-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
 
-    /* Last visited */
     .last-visited {
       font-family: 'Courier Prime', monospace;
-      font-size: 10px;
-      color: var(--ink-dim);
+      font-size: 10px; color: var(--ink-dim);
       display: flex; align-items: center; gap: 5px;
-      max-width: 180px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      max-width: 180px; overflow: hidden;
+      white-space: nowrap; text-overflow: ellipsis;
     }
     .last-visited-label { color: var(--ink-faint); flex-shrink: 0; }
 
-    /* Status */
     .status-area { display: flex; align-items: center; gap: 7px; font-family: 'Courier Prime', monospace; font-size: 11px; color: var(--ink-dim); }
     .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #6a9e6a; display: inline-block; animation: pulse-dot 2.5s ease-in-out infinite; }
 
-    /* Dark mode toggle */
     .theme-toggle {
       width: 28px; height: 28px;
-      border: 1px solid var(--border-md);
-      border-radius: 4px;
-      background: transparent;
-      cursor: pointer;
+      border: 1px solid var(--border-md); border-radius: 4px;
+      background: transparent; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      font-size: 13px;
-      color: var(--ink-dim);
+      font-size: 13px; color: var(--ink-dim);
       transition: border-color 0.2s, color 0.2s;
     }
     .theme-toggle:hover { border-color: var(--ink-dim); color: var(--ink); }
@@ -178,11 +170,10 @@
     .hero h1 em { font-style: italic; font-weight: 300; color: var(--ink-mid); }
     .hero-sub { font-size: 13px; color: var(--ink-mid); max-width: 400px; line-height: 1.7; font-weight: 300; margin-top: 18px; }
 
-    /* ── FILTER + SEARCH ROW ── */
+    /* ── FILTER ROW ── */
     .filter-row {
       display: flex; align-items: center; gap: 8px;
-      margin-bottom: 0;
-      padding-bottom: 12px;
+      margin-bottom: 0; padding-bottom: 12px;
       border-bottom: 1px solid var(--border-md);
       flex-wrap: wrap;
       animation: fadeUp 0.5s 0.05s ease both;
@@ -190,20 +181,13 @@
     .filter-btn {
       font-family: 'Courier Prime', monospace;
       font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--ink-dim);
-      background: transparent;
-      border: 1px solid var(--border-md);
-      border-radius: 3px;
-      padding: 4px 10px;
-      cursor: pointer;
+      color: var(--ink-dim); background: transparent;
+      border: 1px solid var(--border-md); border-radius: 3px;
+      padding: 4px 10px; cursor: pointer;
       transition: background 0.15s, color 0.15s, border-color 0.15s;
     }
     .filter-btn:hover { color: var(--ink); border-color: var(--ink-mid); }
-    .filter-btn.active {
-      background: var(--ink);
-      color: var(--bg);
-      border-color: var(--ink);
-    }
+    .filter-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
     /* ── SECTION LABEL ── */
     .section-label {
@@ -228,7 +212,7 @@
 
     .agent-col {
       display: flex; flex-direction: column;
-      border-right: 1px solid var(--border-md);
+      border-right: 1px solid var(--border-col);
     }
     .agent-col:last-child { border-right: none; }
     .agent-col.hidden { display: none; }
@@ -240,38 +224,30 @@
       display: flex; flex-direction: column;
       cursor: pointer; text-decoration: none; color: inherit;
       transition: background 0.18s;
-      flex: 1;
-      position: relative;
-      overflow: hidden;
+      flex: 1; position: relative; overflow: hidden;
+      border-top: 2px solid rgba(60,50,35,0.07);
     }
+    .agent-card:first-child { border-top: none; }
     .agent-card:hover { background: var(--bg-card-h); }
     .agent-card + .agent-card { border-top: 1px solid var(--border-md); }
 
     /* Category color stripe */
     .agent-card::before {
-      content: '';
-      position: absolute; left: 0; top: 0; bottom: 0;
-      width: 3px;
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
     }
-    .agent-col[data-cat="marketing"] .agent-card::before { background: #b87a52; }
-    .agent-col[data-cat="ehandel"]   .agent-card::before { background: #527ab8; }
-    .agent-col[data-cat="logistikk"] .agent-card::before { background: #52a870; }
+    .agent-col[data-cat="marketing"]     .agent-card::before { background: #b87a52; }
+    .agent-col[data-cat="ehandel"]       .agent-card::before { background: #527ab8; }
+    .agent-col[data-cat="logistikk"]     .agent-card::before { background: #52a870; }
     .agent-col[data-cat="dokumentasjon"] .agent-card::before { background: #8b7ab8; }
     .agent-col[data-cat="seo"]           .agent-card::before { background: #b8a052; }
 
-    /* Card header row */
     .card-top {
       display: flex; align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 18px;
+      justify-content: space-between; margin-bottom: 18px;
     }
-    .card-num {
-      font-family: 'Courier Prime', monospace;
-      font-size: 10px; color: var(--ink-faint);
-    }
+    .card-num { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); }
     .card-badges { display: flex; gap: 5px; align-items: center; }
 
-    /* Ny-badge */
     .badge-new {
       font-family: 'Courier Prime', monospace;
       font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
@@ -279,22 +255,23 @@
       border: 1px solid rgba(82,168,112,0.3);
       padding: 2px 6px; border-radius: 2px;
     }
-
-    /* Complexity badge */
+    .badge-wip {
+      font-family: 'Courier Prime', monospace;
+      font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #b87a52; background: rgba(184,122,82,0.10);
+      border: 1px solid rgba(184,122,82,0.28);
+      padding: 2px 6px; border-radius: 2px;
+    }
     .badge-complexity {
       font-family: 'Courier Prime', monospace;
       font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--ink-dim);
-      border: 1px solid var(--border-md);
+      color: var(--ink-dim); border: 1px solid var(--border-md);
       padding: 2px 6px; border-radius: 2px;
     }
-
-    /* Pulse dot on card */
     .card-pulse {
       width: 6px; height: 6px; border-radius: 50%;
       background: #6a9e6a;
-      animation: pulse-dot 2.5s ease-in-out infinite;
-      flex-shrink: 0;
+      animation: pulse-dot 2.5s ease-in-out infinite; flex-shrink: 0;
     }
 
     .card-tag {
@@ -311,66 +288,46 @@
       font-size: 12px; color: var(--ink-mid);
       line-height: 1.65; font-weight: 300; flex: 1;
     }
-
-    /* Last used */
     .card-meta {
       font-family: 'Courier Prime', monospace;
-      font-size: 9px; color: var(--ink-faint);
-      margin-top: 10px;
+      font-size: 9px; color: var(--ink-faint); margin-top: 10px;
     }
 
     /* Steps accordion */
     .card-steps {
-      margin-top: 14px;
-      border-top: 1px solid var(--border);
-      overflow: hidden;
-      max-height: 0;
-      transition: max-height 0.35s ease, opacity 0.3s ease;
-      opacity: 0;
+      margin-top: 14px; border-top: 1px solid var(--border);
+      overflow: hidden; max-height: 0;
+      transition: max-height 0.35s ease, opacity 0.3s ease; opacity: 0;
     }
-    .card-steps.open { max-height: 200px; opacity: 1; }
+    .card-steps.open { max-height: 220px; opacity: 1; }
     .steps-inner { padding-top: 12px; display: flex; flex-direction: column; gap: 7px; }
-    .step-row {
-      display: flex; align-items: flex-start; gap: 9px;
-    }
+    .step-row { display: flex; align-items: flex-start; gap: 9px; }
     .step-num {
       font-family: 'Courier Prime', monospace;
-      font-size: 9px; color: var(--ink-faint);
-      min-width: 14px; padding-top: 1px;
+      font-size: 9px; color: var(--ink-faint); min-width: 14px; padding-top: 1px;
     }
     .step-text { font-size: 11px; color: var(--ink-dim); line-height: 1.5; font-weight: 300; }
 
     /* Card footer */
     .card-footer {
-      margin-top: 16px;
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: 12px;
+      margin-top: 16px; display: flex; align-items: center;
+      justify-content: space-between; padding-top: 12px;
       border-top: 1px solid var(--border);
     }
     .card-footer-left { display: flex; align-items: center; gap: 10px; }
-    .card-link-label {
-      font-family: 'Courier Prime', monospace;
-      font-size: 10px; color: var(--ink-dim); letter-spacing: 0.05em;
-    }
-    .card-arrow {
-      font-size: 13px; color: var(--ink-mid);
-      transition: transform 0.2s;
-    }
+    .card-arrow { font-size: 13px; color: var(--ink-mid); transition: transform 0.2s; }
     .agent-card:hover .card-arrow { transform: translate(2px,-2px); }
 
-    /* Steps toggle button */
     .steps-toggle {
       font-family: 'Courier Prime', monospace;
       font-size: 9px; color: var(--ink-dim);
       background: none; border: 1px solid var(--border-md);
       border-radius: 2px; padding: 2px 7px;
       cursor: pointer; letter-spacing: 0.07em;
-      transition: color 0.15s, border-color 0.15s;
-      white-space: nowrap;
+      transition: color 0.15s, border-color 0.15s; white-space: nowrap;
     }
     .steps-toggle:hover { color: var(--ink); border-color: var(--ink-mid); }
 
-    /* Copy link button */
     .copy-btn {
       font-family: 'Courier Prime', monospace;
       font-size: 9px; color: var(--ink-dim);
@@ -383,18 +340,20 @@
 
     /* ── MINI CARD ── */
     .agent-card.mini {
-      padding: 12px 22px; flex-direction: row; align-items: center;
-      gap: 12px; background: var(--bg-mini); flex: 0;
+      padding: 18px 22px;
+      flex-direction: row; align-items: center;
+      gap: 14px; background: var(--bg-mini); flex: 0;
+      min-height: 72px;
     }
     .agent-card.mini:hover { background: var(--bg-mini-h); }
-    .mini-body { flex: 1; }
-    .mini .card-title { font-size: 14px; margin-bottom: 2px; }
-    .mini .card-desc  { font-size: 11px; }
+    .mini-body { flex: 1; min-width: 0; }
+    .mini .card-title { font-size: 16px; margin-bottom: 4px; }
+    .mini .card-desc  { font-size: 12px; line-height: 1.5; white-space: normal; }
     .mini-badge {
       font-family: 'Courier Prime', monospace;
       font-size: 9px; color: var(--ink-dim); letter-spacing: 0.08em;
       background: var(--bg); border: 1px solid var(--border-md);
-      padding: 3px 8px; border-radius: 2px; flex-shrink: 0;
+      padding: 4px 10px; border-radius: 2px; flex-shrink: 0;
       transition: background 0.3s;
     }
 
@@ -449,19 +408,15 @@
     footer p   { font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-dim); letter-spacing: 0.04em; }
     footer span{ font-family: 'Courier Prime', monospace; font-size: 10px; color: var(--ink-faint); }
 
-    /* Keyboard hint */
     .kbd-hint {
       font-family: 'Courier Prime', monospace;
       font-size: 9px; color: var(--ink-faint);
       display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
     }
     .kbd {
-      display: inline-block;
-      border: 1px solid var(--border-md);
-      border-radius: 2px;
-      padding: 1px 5px;
-      font-size: 9px;
-      color: var(--ink-dim);
+      display: inline-block; border: 1px solid var(--border-md);
+      border-radius: 2px; padding: 1px 5px;
+      font-size: 9px; color: var(--ink-dim);
     }
 
     /* ── TOAST ── */
@@ -496,12 +451,10 @@
       <span class="topbar-sep">—</span>
       <span class="topbar-domain">novooi.com</span>
     </div>
-
     <div class="topbar-search">
       <span class="search-icon">⌕</span>
       <input type="text" id="searchInput" placeholder="Søk etter agent..." autocomplete="off" />
     </div>
-
     <div class="topbar-right">
       <div class="last-visited" id="lastVisited" style="display:none;">
         <span class="last-visited-label">sist:</span>
@@ -534,23 +487,15 @@
       <button class="filter-btn" data-filter="seo">SEO</button>
     </div>
 
-    <!-- Active agents label -->
     <div class="section-label" style="margin-top:0;">Aktive agenter</div>
     <div class="agents-grid" id="agentsGrid">
 
       <!-- 01 Marketing -->
       <div class="agent-col" data-cat="marketing" data-title="Marketing Agent">
-        <a class="agent-card"
-           href="https://mekkis2002.github.io/markedsf-ringsagent/"
-           data-name="Marketing Agent"
-           target="_blank" rel="noopener"
-           onclick="trackVisit(this)">
+        <a class="agent-card" href="https://mekkis2002.github.io/markedsf-ringsagent/" data-name="Marketing Agent" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">01</span>
-            <div class="card-badges">
-              <span class="badge-complexity">Middels</span>
-              <span class="card-pulse"></span>
-            </div>
+            <div class="card-badges"><span class="badge-complexity">Middels</span><span class="card-pulse"></span></div>
           </div>
           <div class="card-tag">Innhold & markedsføring</div>
           <div class="card-title">Marketing Agent</div>
@@ -575,17 +520,10 @@
 
       <!-- 02 WooCommerce -->
       <div class="agent-col" data-cat="ehandel" data-title="WooCommerce CSV Import">
-        <a class="agent-card"
-           href="https://mekkis2002.github.io/woocommerce-import/"
-           data-name="WooCommerce CSV Import"
-           target="_blank" rel="noopener"
-           onclick="trackVisit(this)">
+        <a class="agent-card" href="https://mekkis2002.github.io/woocommerce-import/" data-name="WooCommerce CSV Import" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">02</span>
-            <div class="card-badges">
-              <span class="badge-complexity">Avansert</span>
-              <span class="card-pulse"></span>
-            </div>
+            <div class="card-badges"><span class="badge-complexity">Avansert</span><span class="card-pulse"></span></div>
           </div>
           <div class="card-tag">E-handel</div>
           <div class="card-title">WooCommerce CSV Import</div>
@@ -606,11 +544,7 @@
             <span class="card-arrow">↗</span>
           </div>
         </a>
-        <a class="agent-card mini"
-           href="https://chatgpt.com/g/g-68b69eca01188191a9902fe7ee9fd57d-woocommerce-product-import-bot"
-           data-name="GPT Import Bot"
-           target="_blank" rel="noopener"
-           onclick="trackVisit(this)">
+        <a class="agent-card mini" href="https://chatgpt.com/g/g-68b69eca01188191a9902fe7ee9fd57d-woocommerce-product-import-bot" data-name="GPT Import Bot" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="mini-body">
             <div class="card-title">GPT Import Bot</div>
             <div class="card-desc">ChatGPT-agent for produktimport</div>
@@ -621,17 +555,10 @@
 
       <!-- 03 Vendor Pipeline -->
       <div class="agent-col" data-cat="logistikk" data-title="Vendor Preorder Pipeline">
-        <a class="agent-card"
-           href="https://mekkis2002.github.io/leverand-r-pipeline/"
-           data-name="Vendor Preorder Pipeline"
-           target="_blank" rel="noopener"
-           onclick="trackVisit(this)">
+        <a class="agent-card" href="https://mekkis2002.github.io/leverand-r-pipeline/" data-name="Vendor Preorder Pipeline" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">03</span>
-            <div class="card-badges">
-              <span class="badge-complexity">Avansert</span>
-              <span class="card-pulse"></span>
-            </div>
+            <div class="card-badges"><span class="badge-complexity">Avansert</span><span class="card-pulse"></span></div>
           </div>
           <div class="card-tag">Innkjøp & logistikk</div>
           <div class="card-title">Vendor Preorder Pipeline</div>
@@ -656,18 +583,10 @@
 
       <!-- 04 BIM & CAD -->
       <div class="agent-col" data-cat="dokumentasjon" data-title="BIM & CAD Arkivering">
-        <a class="agent-card"
-           href="https://script.google.com/a/macros/novooi.com/s/AKfycbz6F6yptonPYpuI2hUpBnoxdwlhu7dpeyiGGMIpAQdXwhKtuxmEl9S5rKLbtkufIG6T/exec"
-           data-name="BIM & CAD Arkivering"
-           target="_blank" rel="noopener"
-           onclick="trackVisit(this)">
+        <a class="agent-card" href="https://script.google.com/a/macros/novooi.com/s/AKfycbz6F6yptonPYpuI2hUpBnoxdwlhu7dpeyiGGMIpAQdXwhKtuxmEl9S5rKLbtkufIG6T/exec" data-name="BIM & CAD Arkivering" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">04</span>
-            <div class="card-badges">
-              <span class="badge-new">Ny</span>
-              <span class="badge-complexity">Middels</span>
-              <span class="card-pulse"></span>
-            </div>
+            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Middels</span><span class="card-pulse"></span></div>
           </div>
           <div class="card-tag">Teknisk dokumentasjon</div>
           <div class="card-title">BIM & CAD Arkivering</div>
@@ -692,18 +611,10 @@
 
       <!-- 05 SEO Optimalisering -->
       <div class="agent-col" data-cat="seo" data-title="SEO Optimalisering Agent">
-        <a class="agent-card"
-           href="https://novooi.github.io/SEO-Optimaliserings-Agent/"
-           data-name="SEO Optimalisering Agent"
-           target="_blank" rel="noopener"
-           onclick="trackVisit(this)">
+        <a class="agent-card" href="https://novooi.github.io/SEO-Optimaliserings-Agent/" data-name="SEO Optimalisering Agent" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">05</span>
-            <div class="card-badges">
-              <span class="badge-new">Ny</span>
-              <span class="badge-complexity">Avansert</span>
-              <span class="card-pulse"></span>
-            </div>
+            <div class="card-badges"><span class="badge-wip">Under arbeid</span><span class="badge-complexity">Avansert</span><span class="card-pulse"></span></div>
           </div>
           <div class="card-tag">SEO & innholdskvalitet</div>
           <div class="card-title">SEO Optimalisering Agent</div>
@@ -758,7 +669,6 @@
 
   </div><!-- /page -->
 
-  <!-- Toast -->
   <div class="toast" id="toast">Lenke kopiert!</div>
 
   <script>
@@ -779,8 +689,7 @@
     function trackVisit(el) {
       const name = el.getAttribute('data-name');
       if (!name) return;
-      const data = { name, time: Date.now() };
-      localStorage.setItem('nh-last', JSON.stringify(data));
+      localStorage.setItem('nh-last', JSON.stringify({ name, time: Date.now() }));
     }
     function loadLastVisited() {
       try {
@@ -797,8 +706,7 @@
 
     /* ── LAST USED PER CARD ── */
     function loadCardMeta() {
-      const cards = document.querySelectorAll('.agent-card[data-name]');
-      cards.forEach(c => {
+      document.querySelectorAll('.agent-card[data-name]').forEach(c => {
         try {
           const raw = localStorage.getItem('nh-visited-' + c.getAttribute('data-name'));
           if (!raw) return;
@@ -812,8 +720,7 @@
     }
     document.querySelectorAll('.agent-card[data-name]').forEach(c => {
       c.addEventListener('click', () => {
-        const name = c.getAttribute('data-name');
-        localStorage.setItem('nh-visited-' + name, JSON.stringify({ time: Date.now() }));
+        localStorage.setItem('nh-visited-' + c.getAttribute('data-name'), JSON.stringify({ time: Date.now() }));
       });
     });
     loadCardMeta();
@@ -843,8 +750,7 @@
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const f = btn.getAttribute('data-filter');
-        filterAgents(f, document.getElementById('searchInput').value.trim().toLowerCase());
+        filterAgents(btn.getAttribute('data-filter'), document.getElementById('searchInput').value.trim().toLowerCase());
       });
     });
 
@@ -858,12 +764,10 @@
       const cols = document.querySelectorAll('.agent-col');
       let visible = 0;
       cols.forEach(col => {
-        const colCat   = col.getAttribute('data-cat');
-        const colTitle = (col.getAttribute('data-title') || '').toLowerCase();
-        const catMatch  = cat === 'alle' || colCat === cat;
-        const qryMatch  = !query || colTitle.includes(query);
+        const catMatch = cat === 'alle' || col.getAttribute('data-cat') === cat;
+        const qryMatch = !query || (col.getAttribute('data-title') || '').toLowerCase().includes(query);
         if (catMatch && qryMatch) { col.classList.remove('hidden'); visible++; }
-        else                      { col.classList.add('hidden'); }
+        else { col.classList.add('hidden'); }
       });
       document.getElementById('noResults').classList.toggle('visible', visible === 0);
     }
@@ -878,7 +782,7 @@
     ];
     document.addEventListener('keydown', e => {
       if (document.activeElement.tagName === 'INPUT') return;
-      if (e.key === '/' ) { e.preventDefault(); document.getElementById('searchInput').focus(); }
+      if (e.key === '/') { e.preventDefault(); document.getElementById('searchInput').focus(); }
       if (e.key === 'd' || e.key === 'D') { document.getElementById('themeToggle').click(); }
       const n = parseInt(e.key);
       if (n >= 1 && n <= 5) window.open(agentLinks[n-1], '_blank');
