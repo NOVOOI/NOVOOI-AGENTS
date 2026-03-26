@@ -178,14 +178,17 @@
     /* ── Agents grid ── */
     .agents-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       border: 1px solid var(--border-md);
       border-top: none;
       margin-bottom: 0;
       animation: fadeUp 0.5s 0.1s ease both;
     }
 
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
+      .agents-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
       .agents-grid { grid-template-columns: 1fr; }
     }
 
@@ -466,6 +469,19 @@
           <div class="card-desc">Administrer forhåndsbestillinger fra leverandører. Hold styr på pipeline, frister og leverandørkommunikasjon.</div>
           <div class="card-footer">
             <span class="card-link-label">Åpne pipeline</span>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="agent-col">
+        <a class="agent-card" href="https://script.google.com/a/macros/novooi.com/s/AKfycbzO0nc6CAMtT1Hsj1IN3mLzfA-a6io95vu8Zi4L468ZwB7PLBNLC7Bj-avAaUPkTc-e/exec" target="_blank" rel="noopener">
+          <div class="card-num">04</div>
+          <div class="card-tag">Teknisk dokumentasjon</div>
+          <div class="card-title">BIM & CAD Arkivering</div>
+          <div class="card-desc">Lim inn en URL til en produsentside. Agenten finner BIM-filer, CAD-tegninger og 3D-modeller, matcher mot Novooi og laster opp til Google Drive.</div>
+          <div class="card-footer">
+            <span class="card-link-label">Åpne agent</span>
             <span class="card-arrow">↗</span>
           </div>
         </a>
