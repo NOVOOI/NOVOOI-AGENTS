@@ -461,7 +461,7 @@
       </div>
       <div class="status-area">
         <span class="status-dot"></span>
-        <span>5 aktive</span>
+        <span>6 aktive</span>
       </div>
       <button class="theme-toggle" id="themeToggle" title="Bytt tema">☽</button>
     </div>
@@ -635,6 +635,36 @@
         </a>
       </div>
 
+      <!-- 06 Bulk produkttagger -->
+      <div class="agent-col" data-cat="ehandel" data-title="Bulk produkttagger">
+        <a class="agent-card" href="https://novooi.github.io/Bulk-produkttagger/" data-name="Bulk produkttagger" target="_blank" rel="noopener" onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">06</span>
+            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Avansert</span><span class="card-pulse"></span></div>
+          </div>
+          <div class="card-tag">E-handel</div>
+          <div class="card-title">Bulk produkttagger</div>
+          <div class="card-desc">Kobler til WooCommerce via API og lar Claude analysere produkter i batch. Generer og godkjenn taggeforslag på tvers av Stil, Materiale, Rom, Farge og Produktegenskap — publiser direkte til WC.</div>
+          <div class="card-meta" id="meta-6">—</div>
+          <div class="card-steps" id="steps-6">
+            <div class="steps-inner">
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Lim inn WooCommerce- og Claude API-nøkler, velg batch-størrelse og maks antall produkter</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Rediger taksonomi — ferdig utfylt med Novooi-kategorier, legg til eller fjern fritt</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Claude analyserer produkter i batches med live progress — pause/stopp når som helst</span></div>
+              <div class="step-row"><span class="step-num">04</span><span class="step-text">Gjennomgå forslag i tabell, toggle av/på individuelt eller godkjenn alle i bulk</span></div>
+              <div class="step-row"><span class="step-num">05</span><span class="step-text">Sender PUT til WooCommerce for hvert godkjent produkt — nye tagger opprettes automatisk</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-footer-left">
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-6',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/Bulk-produkttagger/')">Kopier lenke</button>
+            </div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+      </div>
+
     </div><!-- /agents-grid -->
 
     <div class="no-results" id="noResults">Ingen agenter matcher søket.</div>
@@ -658,7 +688,7 @@
       <p>Novooi — Internt verktøy</p>
       <div class="kbd-hint">
         <span>Snarveier:</span>
-        <span><span class="kbd">1</span>–<span class="kbd">5</span> åpne agent</span>
+        <span><span class="kbd">1</span>–<span class="kbd">6</span> åpne agent</span>
         <span><span class="kbd">/</span> søk</span>
         <span><span class="kbd">D</span> mørk modus</span>
       </div>
@@ -776,14 +806,15 @@
       'https://mekkis2002.github.io/woocommerce-import/',
       'https://mekkis2002.github.io/leverand-r-pipeline/',
       'https://script.google.com/a/macros/novooi.com/s/AKfycbz6F6yptonPYpuI2hUpBnoxdwlhu7dpeyiGGMIpAQdXwhKtuxmEl9S5rKLbtkufIG6T/exec',
-      'https://novooi.github.io/SEO-Optimaliserings-Agent/'
+      'https://novooi.github.io/SEO-Optimaliserings-Agent/',
+      'https://novooi.github.io/Bulk-produkttagger/'
     ];
     document.addEventListener('keydown', e => {
       if (document.activeElement.tagName === 'INPUT') return;
       if (e.key === '/') { e.preventDefault(); document.getElementById('searchInput').focus(); }
       if (e.key === 'd' || e.key === 'D') { document.getElementById('themeToggle').click(); }
       const n = parseInt(e.key);
-      if (n >= 1 && n <= 5) window.open(agentLinks[n-1], '_blank');
+      if (n >= 1 && n <= 6) window.open(agentLinks[n-1], '_blank');
     });
   </script>
 </body>
