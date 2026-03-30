@@ -298,7 +298,7 @@
       overflow: hidden; max-height: 0;
       transition: max-height 0.35s ease, opacity 0.3s ease; opacity: 0;
     }
-    .card-steps.open { max-height: 220px; opacity: 1; }
+    .card-steps.open { max-height: 400px; opacity: 1; }
     .steps-inner { padding-top: 12px; display: flex; flex-direction: column; gap: 7px; }
     .step-row { display: flex; align-items: flex-start; gap: 9px; }
     .step-num {
@@ -461,7 +461,7 @@
       </div>
       <div class="status-area">
         <span class="status-dot"></span>
-        <span>6 aktive</span>
+        <span>7 aktive</span>
       </div>
       <button class="theme-toggle" id="themeToggle" title="Bytt tema">☽</button>
     </div>
@@ -665,6 +665,37 @@
         </a>
       </div>
 
+      <!-- 07 BIM & CAD Publisering -->
+      <div class="agent-col" data-cat="dokumentasjon" data-title="BIM & CAD Publisering">
+        <a class="agent-card" href="https://script.google.com/a/macros/novooi.com/s/AKfycbyeHeY4_JFzTT27kRsac2ejHXyOdxouxRpgPDbM1XqQE8kViDF7RIFDRDW_DjIbruWE2Q/exec" data-name="BIM & CAD Publisering" target="_blank" rel="noopener" onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">07</span>
+            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Avansert</span><span class="card-pulse"></span></div>
+          </div>
+          <div class="card-tag">Teknisk dokumentasjon</div>
+          <div class="card-title">BIM & CAD Publisering</div>
+          <div class="card-desc">Leser Drive-strukturen fra BIM & CAD Arkivering agenten og publiserer nedlastningslenker til BIM-filer som custom fields på riktige WooCommerce-produktsider. Filene forblir i Google Drive.</div>
+          <div class="card-meta" id="meta-7">—</div>
+          <div class="card-steps" id="steps-7">
+            <div class="steps-inner">
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Traverserer mappen «4. Brands» i Drive — finner merker, produktmapper og BIM-filer</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Produkt-ID hentes direkte fra mappenavnet — ingen AI-tolkning nødvendig</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Produktet slås opp i WooCommerce via REST API basert på Produkt-ID</span></div>
+              <div class="step-row"><span class="step-num">04</span><span class="step-text">Duplikatsjekk — allerede publiserte filer hoppes over automatisk</span></div>
+              <div class="step-row"><span class="step-num">05</span><span class="step-text">Drive-lenker lagres i custom field <em>_bim_files</em> som JSON på produktet</span></div>
+              <div class="step-row"><span class="step-num">06</span><span class="step-text">Alle oppdateringer, hoppede produkter og feil logges med tidspunkt</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-footer-left">
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-7',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://script.google.com/a/macros/novooi.com/s/AKfycbyeHeY4_JFzTT27kRsac2ejHXyOdxouxRpgPDbM1XqQE8kViDF7RIFDRDW_DjIbruWE2Q/exec')">Kopier lenke</button>
+            </div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+      </div>
+
     </div><!-- /agents-grid -->
 
     <div class="no-results" id="noResults">Ingen agenter matcher søket.</div>
@@ -688,7 +719,7 @@
       <p>Novooi — Internt verktøy</p>
       <div class="kbd-hint">
         <span>Snarveier:</span>
-        <span><span class="kbd">1</span>–<span class="kbd">6</span> åpne agent</span>
+        <span><span class="kbd">1</span>–<span class="kbd">7</span> åpne agent</span>
         <span><span class="kbd">/</span> søk</span>
         <span><span class="kbd">D</span> mørk modus</span>
       </div>
@@ -807,14 +838,15 @@
       'https://mekkis2002.github.io/leverand-r-pipeline/',
       'https://script.google.com/a/macros/novooi.com/s/AKfycbz6F6yptonPYpuI2hUpBnoxdwlhu7dpeyiGGMIpAQdXwhKtuxmEl9S5rKLbtkufIG6T/exec',
       'https://novooi.github.io/SEO-Optimaliserings-Agent/',
-      'https://novooi.github.io/Bulk-produkttagger/'
+      'https://novooi.github.io/Bulk-produkttagger/',
+      'https://script.google.com/a/macros/novooi.com/s/AKfycbyeHeY4_JFzTT27kRsac2ejHXyOdxouxRpgPDbM1XqQE8kViDF7RIFDRDW_DjIbruWE2Q/exec'
     ];
     document.addEventListener('keydown', e => {
       if (document.activeElement.tagName === 'INPUT') return;
       if (e.key === '/') { e.preventDefault(); document.getElementById('searchInput').focus(); }
       if (e.key === 'd' || e.key === 'D') { document.getElementById('themeToggle').click(); }
       const n = parseInt(e.key);
-      if (n >= 1 && n <= 6) window.open(agentLinks[n-1], '_blank');
+      if (n >= 1 && n <= 7) window.open(agentLinks[n-1], '_blank');
     });
   </script>
 </body>
