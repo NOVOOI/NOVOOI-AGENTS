@@ -461,7 +461,7 @@
       </div>
       <div class="status-area">
         <span class="status-dot"></span>
-        <span>7 aktive</span>
+        <span>8 aktive</span>
       </div>
       <button class="theme-toggle" id="themeToggle" title="Bytt tema">☽</button>
     </div>
@@ -473,7 +473,7 @@
     <div class="hero">
       <div class="hero-eyebrow">AI-agenter — Novooi</div>
       <h1>Verktøy som<br/><em>jobber for deg</em></h1>
-      <p class="hero-sub">En samlet oversikt over alle AI-agentene teamet bruker daglig. Klikk deg inn og kom i gang.</p>
+      <p class="hero-sub">En samlet oversikt over alle AI-agentene og verktøy som teamet bruker daglig. Klikk deg inn og kom i gang.</p>
     </div>
 
     <!-- Filter row -->
@@ -696,6 +696,37 @@
         </a>
       </div>
 
+      <!-- 08 QR Kode Generator -->
+      <div class="agent-col" data-cat="marketing" data-title="QR Kode Generator">
+        <a class="agent-card" href="https://novooi.github.io/QR-GEN/" data-name="QR Kode Generator" target="_blank" rel="noopener" onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">08</span>
+            <div class="card-badges"><span class="badge-complexity">Enkel</span><span class="card-pulse"></span></div>
+          </div>
+          <div class="card-tag">Innhold & markedsføring</div>
+          <div class="card-title">QR Kode Generator</div>
+          <div class="card-desc">Internt verktøy for QR-koder med automatisk UTM-sporing. Alle koder får <code style="font-family:'Courier Prime',monospace;font-size:10px;">utm_source=NOVOOIqr</code> låst inn. Støtter fargetilpasning, logo-overlay, batch-generering og nedlasting som SVG eller PNG.</div>
+          <div class="card-meta" id="meta-8">—</div>
+          <div class="card-steps" id="steps-8">
+            <div class="steps-inner">
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Logg inn med passord — sesjonen huskes til du lukker nettleseren</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Lim inn mål-URL og velg UTM-mal (f.eks. Messemateriell eller Katalog SS26)</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Tilpass utseende — fargepalett, gradient, modulstil (firkant / avrundet / sirkler) og tetthet</span></div>
+              <div class="step-row"><span class="step-num">04</span><span class="step-text">Legg til rammetekst og/eller logo-overlay for merkevarebygging</span></div>
+              <div class="step-row"><span class="step-num">05</span><span class="step-text">Last ned som SVG eller PNG, kopier bilde, del lenke med innstillinger, eller skriv ut</span></div>
+              <div class="step-row"><span class="step-num">06</span><span class="step-text">Batch-fanen: lim inn CSV med navn/URL/UTM-felt og last ned alle som ZIP</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-footer-left">
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-8',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/QR-GEN/')">Kopier lenke</button>
+            </div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+      </div>
+
     </div><!-- /agents-grid -->
 
     <div class="no-results" id="noResults">Ingen agenter matcher søket.</div>
@@ -719,7 +750,7 @@
       <p>Novooi — Internt verktøy</p>
       <div class="kbd-hint">
         <span>Snarveier:</span>
-        <span><span class="kbd">1</span>–<span class="kbd">7</span> åpne agent</span>
+        <span><span class="kbd">1</span>–<span class="kbd">8</span> åpne agent</span>
         <span><span class="kbd">/</span> søk</span>
         <span><span class="kbd">D</span> mørk modus</span>
       </div>
@@ -839,14 +870,15 @@
       'https://script.google.com/a/macros/novooi.com/s/AKfycbwj--IN_gsQTG4kC2qwLnuG8D0e9VlOHv4WCivvavKqhujL3e0_Hk0-wYJG76En0Ajd/exec',
       'https://novooi.github.io/SEO-Optimaliserings-Agent/',
       'https://novooi.github.io/Bulk-produkttagger/',
-      'https://script.google.com/a/macros/novooi.com/s/AKfycbzwtVIWn9EiINfhwgQ7EpqUiMsvYMQaZkssyClsmilACJpmSr9WLAFHd2LwiLGhRVsgMA/exec'
+      'https://script.google.com/a/macros/novooi.com/s/AKfycbzwtVIWn9EiINfhwgQ7EpqUiMsvYMQaZkssyClsmilACJpmSr9WLAFHd2LwiLGhRVsgMA/exec',
+      'https://novooi.github.io/QR-GEN/'
     ];
     document.addEventListener('keydown', e => {
       if (document.activeElement.tagName === 'INPUT') return;
       if (e.key === '/') { e.preventDefault(); document.getElementById('searchInput').focus(); }
       if (e.key === 'd' || e.key === 'D') { document.getElementById('themeToggle').click(); }
       const n = parseInt(e.key);
-      if (n >= 1 && n <= 7) window.open(agentLinks[n-1], '_blank');
+      if (n >= 1 && n <= 8) window.open(agentLinks[n-1], '_blank');
     });
   </script>
 </body>
