@@ -254,8 +254,14 @@
       border: 1px solid rgba(82,168,112,0.3);
       padding: 2px 6px; border-radius: 2px;
     }
-    .badge-wip {
+    .badge-ekspert {
       font-family: 'Courier Prime', monospace;
+      font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #7a52b8; background: rgba(122,82,184,0.10);
+      border: 1px solid rgba(122,82,184,0.28);
+      padding: 2px 6px; border-radius: 2px;
+    }
+    .badge-wip {      font-family: 'Courier Prime', monospace;
       font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase;
       color: #b87a52; background: rgba(184,122,82,0.10);
       border: 1px solid rgba(184,122,82,0.28);
@@ -461,7 +467,7 @@
       </div>
       <div class="status-area">
         <span class="status-dot"></span>
-        <span>9 aktive</span>
+        <span>10 aktive</span>
       </div>
       <button class="theme-toggle" id="themeToggle" title="Bytt tema">☽</button>
     </div>
@@ -758,6 +764,35 @@
         </a>
       </div>
 
+      <!-- 10 Packshots Python Script-assistent -->
+      <div class="agent-col" data-cat="ehandel" data-title="Packshots Python Script-assistent">
+        <a class="agent-card" href="https://claude.ai/project/019dfc63-af29-7601-9a5e-89ca04d0534a" data-name="Packshots Python Script-assistent" target="_blank" rel="noopener" onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">10</span>
+            <div class="card-badges"><span class="badge-complexity">Ekspert</span><span class="card-pulse"></span></div>
+          </div>
+          <div class="card-tag">E-handel</div>
+          <div class="card-title">Packshots Script-assistent</div>
+          <div class="card-desc">Hjelper med å finne og laste ned produktbilder fra leverandørers nettsider ved å skrive og feilsøke Python Playwright-scripts. Iterativ prosess fra analyse til ferdig nedlastingsscript. Tidligere løst: Flokk (Celi, Capisco Puls, Tion Mesh, SoFi).</div>
+          <div class="card-meta" id="meta-10">—</div>
+          <div class="card-steps" id="steps-10">
+            <div class="steps-inner">
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Del leverandørside og CSV — assistenten analyserer struktur og identifiserer bildestier</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Første Playwright-script genereres og testes lokalt</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Feilsøk iterativt i chat basert på screenshots og feilmeldinger</span></div>
+              <div class="step-row"><span class="step-num">04</span><span class="step-text">Endelig nedlastingsscript leveres — testet og klar til kjøring</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-footer-left">
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-10',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://claude.ai/project/019dfc63-af29-7601-9a5e-89ca04d0534a')">Kopier lenke</button>
+            </div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+      </div>
+
     </div><!-- /agents-grid -->
 
     <div class="no-results" id="noResults">Ingen agenter matcher søket.</div>
@@ -903,7 +938,8 @@
       'https://novooi.github.io/Bulk-produkttagger/',
       'https://script.google.com/a/macros/novooi.com/s/AKfycbzwtVIWn9EiINfhwgQ7EpqUiMsvYMQaZkssyClsmilACJpmSr9WLAFHd2LwiLGhRVsgMA/exec',
       'https://novooi.github.io/QR-GEN/',
-      'https://novooi.github.io/GADS-AGENT/'
+      'https://novooi.github.io/GADS-AGENT/',
+      'https://claude.ai/project/019dfc63-af29-7601-9a5e-89ca04d0534a'
     ];
     document.addEventListener('keydown', e => {
       if (document.activeElement.tagName === 'INPUT') return;
