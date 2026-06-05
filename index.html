@@ -639,6 +639,59 @@
     }
     .onboarding-dismiss:hover { opacity: 0.85; }
 
+
+    /* ── FOCUS RING ── */
+    .agent-card:focus {
+      outline: 2px solid var(--ink-mid);
+      outline-offset: -2px;
+      background: var(--bg-card-h);
+    }
+    .agent-card:focus .card-arrow { transform: translate(2px,-2px); }
+
+    /* ── COLORED CARD NUM ── */
+    .agent-col[data-cat="marketing"]     .card-num { color: #b87a52; }
+    .agent-col[data-cat="ehandel"]       .card-num { color: #527ab8; }
+    .agent-col[data-cat="logistikk"]     .card-num { color: #52a870; }
+    .agent-col[data-cat="dokumentasjon"] .card-num { color: #8b7ab8; }
+
+    /* ── BADGE TOOLTIPS ── */
+    [data-tooltip] { position: relative; cursor: help; }
+    [data-tooltip]::after {
+      content: attr(data-tooltip);
+      position: absolute; bottom: calc(100% + 6px); left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink); color: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px; font-weight: 300; letter-spacing: 0;
+      white-space: nowrap; padding: 4px 9px;
+      border-radius: 3px; pointer-events: none;
+      opacity: 0; transition: opacity 0.15s;
+      z-index: 200;
+    }
+    [data-tooltip]:hover::after { opacity: 1; }
+
+    /* ── COPY BTN FEEDBACK ── */
+    .copy-btn.copied {
+      color: #52a870;
+      border-color: rgba(82,168,112,0.4);
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      .topbar, .filter-row, .card-footer, .coming-section,
+      footer, .modal-overlay, .onboarding-overlay, .toast,
+      .card-steps, .card-meta { display: none !important; }
+      body { background: white !important; color: black !important; }
+      .page { padding: 0 !important; max-width: 100% !important; }
+      .agents-grid { grid-template-columns: repeat(3,1fr) !important; border: 1px solid #ccc !important; }
+      .agent-col { border-right: 1px solid #ccc !important; break-inside: avoid; }
+      .agent-card { background: white !important; padding: 16px !important; border-top: 1px solid #eee !important; }
+      .card-title { font-size: 16px !important; }
+      .card-desc { font-size: 11px !important; -webkit-print-color-adjust: exact; }
+      .agent-card::before { display: block !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .hero h1 { font-size: 36px !important; }
+    }
+
   </style>
 </head>
 <body>
@@ -699,7 +752,7 @@
         <a class="agent-card" href="https://mekkis2002.github.io/woocommerce-import/" data-name="WooCommerce CSV Import" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">01</span>
-            <div class="card-badges"><span class="badge-complexity">Avansert</span><span class="card-pulse"></span></div>
+            <div class="card-badges"><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span></div>
           </div>
           <div class="card-tag">E-handel</div>
           <div class="card-title">WooCommerce CSV Import</div>
@@ -734,7 +787,7 @@
         <a class="agent-card" href="https://mekkis2002.github.io/leverand-r-pipeline/" data-name="Vendor Preorder Pipeline" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">02</span>
-            <div class="card-badges"><span class="badge-complexity">Avansert</span><span class="card-pulse"></span></div>
+            <div class="card-badges"><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span></div>
           </div>
           <div class="card-tag">Innkjøp & logistikk</div>
           <div class="card-title">Vendor Preorder Pipeline</div>
@@ -762,7 +815,7 @@
         <a class="agent-card" href="https://script.google.com/a/macros/novooi.com/s/AKfycbwj--IN_gsQTG4kC2qwLnuG8D0e9VlOHv4WCivvavKqhujL3e0_Hk0-wYJG76En0Ajd/exec" data-name="BIM & CAD Arkivering" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">03</span>
-            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Middels</span><span class="card-pulse"></span><span class="badge-setup">Krever oppsett</span></div>
+            <div class="card-badges"><span class="badge-new" data-tooltip="Nylig lansert">Ny</span><span class="badge-complexity" data-tooltip="Passe for de fleste">Middels</span><span class="card-pulse"></span><span class="badge-setup" data-tooltip="Krever API-nøkler eller konfigurasjon ved første bruk">Krever oppsett</span></div>
           </div>
           <div class="card-tag">Teknisk dokumentasjon</div>
           <div class="card-title">BIM & CAD Arkivering</div>
@@ -790,7 +843,7 @@
         <a class="agent-card" href="https://novooi.github.io/SEO-Optimaliserings-Agent/" data-name="SEO Optimalisering Agent" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">04</span>
-            <div class="card-badges"><span class="badge-wip">Under arbeid</span><span class="badge-complexity">Avansert</span><span class="card-pulse"></span><span class="badge-setup">Krever oppsett</span></div>
+            <div class="card-badges"><span class="badge-wip" data-tooltip="Agenten er under aktiv utvikling">Under arbeid</span><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span><span class="badge-setup" data-tooltip="Krever API-nøkler eller konfigurasjon ved første bruk">Krever oppsett</span></div>
           </div>
           <div class="card-tag">SEO & innholdskvalitet</div>
           <div class="card-title">SEO Optimalisering Agent</div>
@@ -818,7 +871,7 @@
         <a class="agent-card" href="https://script.google.com/a/macros/novooi.com/s/AKfycbzwtVIWn9EiINfhwgQ7EpqUiMsvYMQaZkssyClsmilACJpmSr9WLAFHd2LwiLGhRVsgMA/exec" data-name="BIM & CAD Publisering" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">05</span>
-            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Avansert</span><span class="card-pulse"></span><span class="badge-setup">Krever oppsett</span></div>
+            <div class="card-badges"><span class="badge-new" data-tooltip="Nylig lansert">Ny</span><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span><span class="badge-setup" data-tooltip="Krever API-nøkler eller konfigurasjon ved første bruk">Krever oppsett</span></div>
           </div>
           <div class="card-tag">Teknisk dokumentasjon</div>
           <div class="card-title">BIM & CAD Publisering</div>
@@ -849,7 +902,7 @@
         <a class="agent-card" href="https://novooi.github.io/QR-GEN/" data-name="QR Kode Generator" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">06</span>
-            <div class="card-badges"><span class="badge-complexity">Enkel</span><span class="card-pulse"></span></div>
+            <div class="card-badges"><span class="badge-complexity" data-tooltip="Enkel å komme i gang med">Enkel</span><span class="card-pulse"></span></div>
           </div>
           <div class="card-tag">Innhold & markedsføring</div>
           <div class="card-title">QR Kode Generator</div>
@@ -880,7 +933,7 @@
         <a class="agent-card" href="https://novooi.github.io/GADS-AGENT/" data-name="Google Ads Analyse" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">07</span>
-            <div class="card-badges"><span class="badge-complexity">Avansert</span><span class="card-pulse"></span><span class="badge-setup">Krever oppsett</span></div>
+            <div class="card-badges"><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span><span class="badge-setup" data-tooltip="Krever API-nøkler eller konfigurasjon ved første bruk">Krever oppsett</span></div>
           </div>
           <div class="card-tag">Innhold & markedsføring</div>
           <div class="card-title">Google Ads Analyse</div>
@@ -911,7 +964,7 @@
         <a class="agent-card" href="https://claude.ai/project/019dfc63-af29-7601-9a5e-89ca04d0534a" data-name="Packshots Python Script-assistent" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">08</span>
-            <div class="card-badges"><span class="badge-complexity">Ekspert</span><span class="card-pulse"></span></div>
+            <div class="card-badges"><span class="badge-complexity" data-tooltip="Krever teknisk ekspertise">Ekspert</span><span class="card-pulse"></span></div>
           </div>
           <div class="card-tag">E-handel</div>
           <div class="card-title">Packshots Script-assistent</div>
@@ -940,7 +993,7 @@
         <a class="agent-card" href="https://novooi.github.io/prisoppdatering/" data-name="Prisoppdatering" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">09</span>
-            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Middels</span><span class="card-pulse"></span><span class="badge-setup">Krever oppsett</span></div>
+            <div class="card-badges"><span class="badge-new" data-tooltip="Nylig lansert">Ny</span><span class="badge-complexity" data-tooltip="Passe for de fleste">Middels</span><span class="card-pulse"></span><span class="badge-setup" data-tooltip="Krever API-nøkler eller konfigurasjon ved første bruk">Krever oppsett</span></div>
           </div>
           <div class="card-tag">E-handel</div>
           <div class="card-title">Prisoppdatering</div>
@@ -1109,7 +1162,13 @@
     /* ── COPY LINK ── */
     function copyLink(e, url) {
       e.preventDefault(); e.stopPropagation();
-      navigator.clipboard.writeText(url).then(() => showToast('Lenke kopiert!'));
+      const btn = e.currentTarget;
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('Lenke kopiert!');
+        btn.textContent = 'Kopiert ✓';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'Kopier lenke'; btn.classList.remove('copied'); }, 2000);
+      });
     }
     function showToast(msg) {
       const t = document.getElementById('toast');
@@ -1135,9 +1194,13 @@
     function filterAgents(cat, query) {
       const cols = document.querySelectorAll('.agent-col');
       let visible = 0;
+      const total = cols.length;
       cols.forEach(col => {
         const catMatch = cat === 'alle' || col.getAttribute('data-cat') === cat;
-        const qryMatch = !query || (col.getAttribute('data-title') || '').toLowerCase().includes(query);
+        const titleMatch = !query || (col.getAttribute('data-title') || '').toLowerCase().includes(query);
+        const descMatch  = !query || (col.querySelector('.card-desc')?.textContent || '').toLowerCase().includes(query);
+        const stepsMatch = !query || (col.querySelector('.steps-inner')?.textContent || '').toLowerCase().includes(query);
+        const qryMatch = titleMatch || descMatch || stepsMatch;
         const show = catMatch && qryMatch;
         if (show) {
           col.classList.remove('hidden');
@@ -1150,7 +1213,22 @@
       });
       setTimeout(() => {
         document.getElementById('noResults').classList.toggle('visible', visible === 0);
+        updateStatusCount(visible, total, cat, query);
       }, 230);
+      updatePageTitle(cat, visible);
+    }
+
+    function updateStatusCount(visible, total, cat, query) {
+      const el = document.querySelector('.status-area span:last-child');
+      if (!el) return;
+      if (cat === 'alle' && !query) el.textContent = total + ' aktive';
+      else el.textContent = visible + ' av ' + total + ' aktive';
+    }
+
+    function updatePageTitle(cat, count) {
+      const labels = { alle:'Alle', marketing:'Markedsføring', ehandel:'E-handel', logistikk:'Logistikk', dokumentasjon:'Dokumentasjon' };
+      const label = labels[cat] || cat;
+      document.title = cat === 'alle' ? 'Agent Hub — novooi.com' : `Agent Hub — ${label} (${count})`;
     }
 
     /* ── SORT ── */
@@ -1245,14 +1323,86 @@
       'https://novooi.github.io/prisoppdatering/'
     ];
     document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        if (document.getElementById('infoModal').classList.contains('open')) { closeInfoModal(); return; }
+        if (document.activeElement === document.getElementById('searchInput')) {
+          document.getElementById('searchInput').value = '';
+          filterAgents(document.querySelector('.filter-btn.active').getAttribute('data-filter'), '');
+          document.getElementById('searchInput').blur();
+          return;
+        }
+      }
       if (document.activeElement.tagName === 'INPUT') return;
-      if (e.key === 'Escape') closeInfoModal();
       if (e.key === '/') { e.preventDefault(); document.getElementById('searchInput').focus(); }
       if (e.key === 'd' || e.key === 'D') themeBtn.click();
       if (e.key === 'c' || e.key === 'C') compactBtn.click();
       const n = parseInt(e.key);
       if (n >= 1 && n <= 9) window.open(agentLinks[n-1], '_blank');
     });
+
+    /* ── ENTER TO OPEN AGENT ── */
+    document.querySelectorAll('.agent-card:not(.mini)').forEach(card => {
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter') { e.preventDefault(); card.click(); }
+      });
+    });
+
+    /* ── STEP COUNT ON BUTTONS ── */
+    document.querySelectorAll('.steps-toggle').forEach(btn => {
+      const stepsId = btn.getAttribute('onclick').match(/'(steps-[^']+)'/)?.[1];
+      if (!stepsId) return;
+      const count = document.getElementById(stepsId)?.querySelectorAll('.step-row').length;
+      if (count) btn.textContent = `Vis steg (${count})`;
+      // Update toggle text when opened/closed
+      const orig = btn.getAttribute('onclick');
+      btn.setAttribute('onclick', ''); // remove inline
+      btn.addEventListener('click', function(e) {
+        e.preventDefault(); e.stopPropagation();
+        const el = document.getElementById(stepsId);
+        const open = el.classList.toggle('open');
+        this.textContent = open ? `Skjul steg (${count})` : `Vis steg (${count})`;
+      });
+    });
+
+    /* ── FILTER BADGE COUNTS ── */
+    function updateFilterCounts() {
+      const cols = document.querySelectorAll('.agent-col');
+      const counts = {};
+      cols.forEach(c => {
+        const cat = c.getAttribute('data-cat');
+        counts[cat] = (counts[cat] || 0) + 1;
+      });
+      document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
+        const f = btn.getAttribute('data-filter');
+        if (f === 'alle') {
+          btn.textContent = `Alle (${cols.length})`;
+        } else if (counts[f]) {
+          const label = btn.textContent.replace(/\s*\(\d+\)/, '');
+          btn.textContent = `${label} (${counts[f]})`;
+        }
+      });
+    }
+    updateFilterCounts();
+
+    /* ── URL PARAMS ── */
+    (function applyUrlParams() {
+      const params = new URLSearchParams(window.location.search);
+      const filterParam = params.get('filter');
+      const searchParam = params.get('search');
+      if (filterParam) {
+        const btn = document.querySelector(`.filter-btn[data-filter="${filterParam}"]`);
+        if (btn) { document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); }
+      }
+      if (searchParam) {
+        document.getElementById('searchInput').value = searchParam;
+      }
+      if (filterParam || searchParam) {
+        const f = filterParam || 'alle';
+        const q = (searchParam || '').toLowerCase();
+        filterAgents(f, q);
+      }
+    })();
   </script>
 </body>
 </html>
