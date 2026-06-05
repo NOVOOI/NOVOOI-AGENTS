@@ -467,7 +467,7 @@
       </div>
       <div class="status-area">
         <span class="status-dot"></span>
-        <span>8 aktive</span>
+        <span>9 aktive</span>
       </div>
       <button class="theme-toggle" id="themeToggle" title="Bytt tema">☽</button>
     </div>
@@ -735,6 +735,36 @@
         </a>
       </div>
 
+      <!-- 09 Prisoppdatering -->
+      <div class="agent-col" data-cat="ehandel" data-title="Prisoppdatering">
+        <a class="agent-card" href="https://novooi.github.io/prisoppdatering/" data-name="Prisoppdatering" target="_blank" rel="noopener" onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">09</span>
+            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Middels</span><span class="card-pulse"></span></div>
+          </div>
+          <div class="card-tag">E-handel</div>
+          <div class="card-title">Prisoppdatering</div>
+          <div class="card-desc">Laster inn produktlisten fra WooCommerce og matcher den mot en leverandørprisliste (PDF, Excel, CSV eller bilde) med Claude AI. Returnerer en ferdig CSV klar til import — med gjennomgang og godkjenning før eksport.</div>
+          <div class="card-meta" id="meta-9">—</div>
+          <div class="card-steps" id="steps-9">
+            <div class="steps-inner">
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Koble til WooCommerce og hent produktliste</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Last opp leverandørens prisliste (PDF, Excel, CSV eller bilde)</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">AI matcher produkter og identifiserer prisendringer via automatisk batch-behandling</span></div>
+              <div class="step-row"><span class="step-num">04</span><span class="step-text">Gjennomgå og godkjenn alle endringer før eksport</span></div>
+              <div class="step-row"><span class="step-num">05</span><span class="step-text">Last ned ferdig CSV med SKU og oppdatert pris — importer direkte i WooCommerce</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-footer-left">
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-9',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/prisoppdatering/')">Kopier lenke</button>
+            </div>
+            <span class="card-arrow">↗</span>
+          </div>
+        </a>
+      </div>
+
     </div><!-- /agents-grid -->
 
     <div class="no-results" id="noResults">Ingen agenter matcher søket.</div>
@@ -758,7 +788,7 @@
       <p>Novooi — Internt verktøy</p>
       <div class="kbd-hint">
         <span>Snarveier:</span>
-        <span><span class="kbd">1</span>–<span class="kbd">8</span> åpne agent</span>
+        <span><span class="kbd">1</span>–<span class="kbd">9</span> åpne agent</span>
         <span><span class="kbd">/</span> søk</span>
         <span><span class="kbd">D</span> mørk modus</span>
       </div>
@@ -879,14 +909,15 @@
       'https://script.google.com/a/macros/novooi.com/s/AKfycbzwtVIWn9EiINfhwgQ7EpqUiMsvYMQaZkssyClsmilACJpmSr9WLAFHd2LwiLGhRVsgMA/exec',
       'https://novooi.github.io/QR-GEN/',
       'https://novooi.github.io/GADS-AGENT/',
-      'https://claude.ai/project/019dfc63-af29-7601-9a5e-89ca04d0534a'
+      'https://claude.ai/project/019dfc63-af29-7601-9a5e-89ca04d0534a',
+      'https://novooi.github.io/prisoppdatering/'
     ];
     document.addEventListener('keydown', e => {
       if (document.activeElement.tagName === 'INPUT') return;
       if (e.key === '/') { e.preventDefault(); document.getElementById('searchInput').focus(); }
       if (e.key === 'd' || e.key === 'D') { document.getElementById('themeToggle').click(); }
       const n = parseInt(e.key);
-      if (n >= 1 && n <= 8) window.open(agentLinks[n-1], '_blank');
+      if (n >= 1 && n <= 9) window.open(agentLinks[n-1], '_blank');
     });
   </script>
 </body>
