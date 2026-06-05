@@ -444,6 +444,201 @@
       0%,100% { opacity: 1; transform: scale(1); }
       50%      { opacity: 0.4; transform: scale(0.7); }
     }
+
+    /* ── COMPACT MODE ── */
+    body.compact .agent-card:not(.mini) { padding: 16px 22px 14px; }
+    body.compact .card-desc  { display: none; }
+    body.compact .card-meta  { display: none; }
+    body.compact .card-steps { display: none !important; }
+    body.compact .card-title { font-size: 17px; margin-bottom: 2px; }
+    body.compact .card-tag   { margin-bottom: 4px; }
+    body.compact .card-updated { display: none; }
+
+    /* ── FILTER ANIMATION ── */
+    .agent-col { transition: opacity 0.22s ease, transform 0.22s ease; }
+    .agent-col.fading { opacity: 0; transform: scale(0.97); pointer-events: none; }
+
+    /* ── BADGE SETUP ── */
+    .badge-setup {
+      font-family: 'Courier Prime', monospace;
+      font-size: 8px; letter-spacing: 0.08em; text-transform: uppercase;
+      color: #a05252; background: rgba(160,82,82,0.08);
+      border: 1px solid rgba(160,82,82,0.22);
+      padding: 2px 6px; border-radius: 2px;
+    }
+
+    /* ── CARD UPDATED ── */
+    .card-updated {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px; color: var(--ink-faint);
+      margin-left: auto; padding-left: 8px;
+    }
+    .card-footer { flex-wrap: wrap; row-gap: 6px; }
+
+    /* ── SORT CONTROLS ── */
+    .sort-sep {
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px; color: var(--ink-faint);
+      margin-left: auto;
+    }
+    .sort-btn {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px; letter-spacing: 0.08em;
+      color: var(--ink-dim); background: transparent;
+      border: none; cursor: pointer; padding: 2px 4px;
+      transition: color 0.15s;
+    }
+    .sort-btn:hover { color: var(--ink); }
+    .sort-btn.active { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+
+    /* ── TOPBAR ICON BUTTONS ── */
+    .topbar-icon-btn {
+      width: 28px; height: 28px;
+      border: 1px solid var(--border-md); border-radius: 4px;
+      background: transparent; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: var(--ink-dim);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .topbar-icon-btn:hover { border-color: var(--ink-dim); color: var(--ink); }
+    .topbar-icon-btn.active { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+    /* ── INFO MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,0.35);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.2s;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-md);
+      border-radius: 8px;
+      max-width: 520px; width: 100%;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 32px 28px 28px;
+      position: relative;
+      transform: translateY(8px);
+      transition: transform 0.2s;
+    }
+    .modal-overlay.open .modal-box { transform: translateY(0); }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 26px; height: 26px;
+      border: 1px solid var(--border-md); border-radius: 3px;
+      background: transparent; cursor: pointer;
+      font-size: 14px; color: var(--ink-dim);
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .modal-close:hover { color: var(--ink); border-color: var(--ink-mid); }
+    .modal-cat {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--ink-dim); margin-bottom: 8px;
+    }
+    .modal-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px; font-weight: 500; line-height: 1.05;
+      color: var(--ink); margin-bottom: 14px;
+    }
+    .modal-desc {
+      font-size: 13px; color: var(--ink-mid);
+      line-height: 1.7; font-weight: 300; margin-bottom: 20px;
+    }
+    .modal-steps-label {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-dim); margin-bottom: 12px;
+      padding-bottom: 8px; border-bottom: 1px solid var(--border);
+    }
+    .modal-step { display: flex; gap: 12px; margin-bottom: 10px; align-items: flex-start; }
+    .modal-step-num {
+      font-family: 'Courier Prime', monospace;
+      font-size: 10px; color: var(--ink-faint); min-width: 18px; padding-top: 2px;
+    }
+    .modal-step-text { font-size: 13px; color: var(--ink-mid); line-height: 1.55; font-weight: 300; }
+    .modal-open-btn {
+      margin-top: 20px; width: 100%;
+      background: var(--ink); color: var(--bg);
+      border: none; border-radius: 4px;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px; letter-spacing: 0.06em;
+      padding: 10px 0; cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .modal-open-btn:hover { opacity: 0.85; }
+
+    /* info button on card */
+    .card-info-btn {
+      width: 18px; height: 18px;
+      border: 1px solid var(--border-md); border-radius: 2px;
+      background: transparent; cursor: pointer;
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px; color: var(--ink-faint);
+      display: inline-flex; align-items: center; justify-content: center;
+      transition: color 0.15s, border-color 0.15s; flex-shrink: 0;
+      margin-right: 4px;
+    }
+    .card-info-btn:hover { color: var(--ink); border-color: var(--ink-mid); }
+
+    /* ── ONBOARDING MODAL ── */
+    .onboarding-overlay {
+      position: fixed; inset: 0; z-index: 600;
+      background: rgba(0,0,0,0.45);
+      display: flex; align-items: center; justify-content: center;
+      padding: 24px;
+    }
+    .onboarding-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-md);
+      border-radius: 8px;
+      max-width: 460px; width: 100%;
+      padding: 36px 32px 28px;
+    }
+    .onboarding-eyebrow {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-dim); margin-bottom: 12px;
+    }
+    .onboarding-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 34px; font-weight: 400; line-height: 1.0;
+      color: var(--ink); margin-bottom: 16px;
+    }
+    .onboarding-body {
+      font-size: 13px; color: var(--ink-mid);
+      line-height: 1.7; font-weight: 300; margin-bottom: 20px;
+    }
+    .onboarding-order {
+      border: 1px solid var(--border);
+      border-radius: 4px; overflow: hidden; margin-bottom: 24px;
+    }
+    .onboarding-row {
+      display: flex; align-items: center; gap: 12px;
+      padding: 9px 14px; border-bottom: 1px solid var(--border);
+      font-size: 12px; color: var(--ink-mid);
+    }
+    .onboarding-row:last-child { border-bottom: none; }
+    .onboarding-row-num {
+      font-family: 'Courier Prime', monospace;
+      font-size: 9px; color: var(--ink-faint); min-width: 16px;
+    }
+    .onboarding-dismiss {
+      width: 100%;
+      background: var(--ink); color: var(--bg);
+      border: none; border-radius: 4px;
+      font-family: 'Courier Prime', monospace;
+      font-size: 11px; letter-spacing: 0.06em;
+      padding: 10px 0; cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .onboarding-dismiss:hover { opacity: 0.85; }
+
   </style>
 </head>
 <body>
@@ -469,6 +664,7 @@
         <span class="status-dot"></span>
         <span>9 aktive</span>
       </div>
+      <button class="topbar-icon-btn" id="compactToggle" title="Kompakt visning">⊟</button>
       <button class="theme-toggle" id="themeToggle" title="Bytt tema">☽</button>
     </div>
   </div>
@@ -489,13 +685,17 @@
       <button class="filter-btn" data-filter="ehandel">E-handel</button>
       <button class="filter-btn" data-filter="logistikk">Logistikk</button>
       <button class="filter-btn" data-filter="dokumentasjon">Dokumentasjon</button>
+      <span class="sort-sep">|</span>
+      <button class="sort-btn active" data-sort="standard">Standard</button>
+      <button class="sort-btn" data-sort="alfa">A–Å</button>
+      <button class="sort-btn" data-sort="sist">Sist brukt</button>
     </div>
 
     <div class="section-label" style="margin-top:0;">Aktive agenter</div>
     <div class="agents-grid" id="agentsGrid">
 
       <!-- 01 WooCommerce -->
-      <div class="agent-col" data-cat="ehandel" data-title="WooCommerce CSV Import">
+      <div class="agent-col" data-cat="ehandel" data-title="WooCommerce CSV Import" data-order="1" data-updated="Feb 2025">
         <a class="agent-card" href="https://mekkis2002.github.io/woocommerce-import/" data-name="WooCommerce CSV Import" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">01</span>
@@ -514,7 +714,7 @@
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
-              <button class="steps-toggle" onclick="toggleSteps(event,'steps-2',this)">Vis steg</button>
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-2',this)">Vis steg</button>
               <button class="copy-btn" onclick="copyLink(event,'https://mekkis2002.github.io/woocommerce-import/')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
@@ -530,7 +730,7 @@
       </div>
 
       <!-- 03 Vendor Pipeline -->
-      <div class="agent-col" data-cat="logistikk" data-title="Vendor Preorder Pipeline">
+      <div class="agent-col" data-cat="logistikk" data-title="Vendor Preorder Pipeline" data-order="2" data-updated="Mar 2025">
         <a class="agent-card" href="https://mekkis2002.github.io/leverand-r-pipeline/" data-name="Vendor Preorder Pipeline" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">02</span>
@@ -549,7 +749,7 @@
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
-              <button class="steps-toggle" onclick="toggleSteps(event,'steps-3',this)">Vis steg</button>
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-3',this)">Vis steg</button>
               <button class="copy-btn" onclick="copyLink(event,'https://mekkis2002.github.io/leverand-r-pipeline/')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
@@ -558,11 +758,11 @@
       </div>
 
       <!-- 04 BIM & CAD -->
-      <div class="agent-col" data-cat="dokumentasjon" data-title="BIM & CAD Arkivering">
+      <div class="agent-col" data-cat="dokumentasjon" data-title="BIM & CAD Arkivering" data-order="3" data-updated="Apr 2025">
         <a class="agent-card" href="https://script.google.com/a/macros/novooi.com/s/AKfycbwj--IN_gsQTG4kC2qwLnuG8D0e9VlOHv4WCivvavKqhujL3e0_Hk0-wYJG76En0Ajd/exec" data-name="BIM & CAD Arkivering" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">03</span>
-            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Middels</span><span class="card-pulse"></span></div>
+            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Middels</span><span class="card-pulse"></span><span class="badge-setup">Krever oppsett</span></div>
           </div>
           <div class="card-tag">Teknisk dokumentasjon</div>
           <div class="card-title">BIM & CAD Arkivering</div>
@@ -577,7 +777,7 @@
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
-              <button class="steps-toggle" onclick="toggleSteps(event,'steps-4',this)">Vis steg</button>
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-4',this)">Vis steg</button>
               <button class="copy-btn" onclick="copyLink(event,'https://script.google.com/a/macros/novooi.com/s/AKfycbwj--IN_gsQTG4kC2qwLnuG8D0e9VlOHv4WCivvavKqhujL3e0_Hk0-wYJG76En0Ajd/exec')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
@@ -586,11 +786,11 @@
       </div>
 
       <!-- 05 SEO Optimalisering -->
-      <div class="agent-col" data-cat="ehandel" data-title="SEO Optimalisering Agent">
+      <div class="agent-col" data-cat="ehandel" data-title="SEO Optimalisering Agent" data-order="4" data-updated="Mai 2025">
         <a class="agent-card" href="https://novooi.github.io/SEO-Optimaliserings-Agent/" data-name="SEO Optimalisering Agent" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">04</span>
-            <div class="card-badges"><span class="badge-wip">Under arbeid</span><span class="badge-complexity">Avansert</span><span class="card-pulse"></span></div>
+            <div class="card-badges"><span class="badge-wip">Under arbeid</span><span class="badge-complexity">Avansert</span><span class="card-pulse"></span><span class="badge-setup">Krever oppsett</span></div>
           </div>
           <div class="card-tag">SEO & innholdskvalitet</div>
           <div class="card-title">SEO Optimalisering Agent</div>
@@ -605,7 +805,7 @@
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
-              <button class="steps-toggle" onclick="toggleSteps(event,'steps-5',this)">Vis steg</button>
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-5',this)">Vis steg</button>
               <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/SEO-Optimaliserings-Agent/')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
@@ -614,11 +814,11 @@
       </div>
 
       <!-- 05 BIM & CAD Publisering -->
-      <div class="agent-col" data-cat="dokumentasjon" data-title="BIM & CAD Publisering">
+      <div class="agent-col" data-cat="dokumentasjon" data-title="BIM & CAD Publisering" data-order="5" data-updated="Apr 2025">
         <a class="agent-card" href="https://script.google.com/a/macros/novooi.com/s/AKfycbzwtVIWn9EiINfhwgQ7EpqUiMsvYMQaZkssyClsmilACJpmSr9WLAFHd2LwiLGhRVsgMA/exec" data-name="BIM & CAD Publisering" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">05</span>
-            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Avansert</span><span class="card-pulse"></span></div>
+            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Avansert</span><span class="card-pulse"></span><span class="badge-setup">Krever oppsett</span></div>
           </div>
           <div class="card-tag">Teknisk dokumentasjon</div>
           <div class="card-title">BIM & CAD Publisering</div>
@@ -636,7 +836,7 @@
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
-              <button class="steps-toggle" onclick="toggleSteps(event,'steps-7',this)">Vis steg</button>
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-7',this)">Vis steg</button>
               <button class="copy-btn" onclick="copyLink(event,'https://script.google.com/a/macros/novooi.com/s/AKfycbzwtVIWn9EiINfhwgQ7EpqUiMsvYMQaZkssyClsmilACJpmSr9WLAFHd2LwiLGhRVsgMA/exec')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
@@ -645,7 +845,7 @@
       </div>
 
       <!-- 08 QR Kode Generator -->
-      <div class="agent-col" data-cat="marketing" data-title="QR Kode Generator">
+      <div class="agent-col" data-cat="marketing" data-title="QR Kode Generator" data-order="6" data-updated="Mai 2025">
         <a class="agent-card" href="https://novooi.github.io/QR-GEN/" data-name="QR Kode Generator" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">06</span>
@@ -667,7 +867,7 @@
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
-              <button class="steps-toggle" onclick="toggleSteps(event,'steps-8',this)">Vis steg</button>
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-8',this)">Vis steg</button>
               <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/QR-GEN/')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
@@ -676,11 +876,11 @@
       </div>
 
       <!-- 09 Google Ads Analyse -->
-      <div class="agent-col" data-cat="marketing" data-title="Google Ads Analyse">
+      <div class="agent-col" data-cat="marketing" data-title="Google Ads Analyse" data-order="7" data-updated="Apr 2025">
         <a class="agent-card" href="https://novooi.github.io/GADS-AGENT/" data-name="Google Ads Analyse" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">07</span>
-            <div class="card-badges"><span class="badge-complexity">Avansert</span><span class="card-pulse"></span></div>
+            <div class="card-badges"><span class="badge-complexity">Avansert</span><span class="card-pulse"></span><span class="badge-setup">Krever oppsett</span></div>
           </div>
           <div class="card-tag">Innhold & markedsføring</div>
           <div class="card-title">Google Ads Analyse</div>
@@ -698,7 +898,7 @@
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
-              <button class="steps-toggle" onclick="toggleSteps(event,'steps-9',this)">Vis steg</button>
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-9',this)">Vis steg</button>
               <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/GADS-AGENT/')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
@@ -707,7 +907,7 @@
       </div>
 
       <!-- 10 Packshots Python Script-assistent -->
-      <div class="agent-col" data-cat="ehandel" data-title="Packshots Python Script-assistent">
+      <div class="agent-col" data-cat="ehandel" data-title="Packshots Python Script-assistent" data-order="8" data-updated="Apr 2025">
         <a class="agent-card" href="https://claude.ai/project/019dfc63-af29-7601-9a5e-89ca04d0534a" data-name="Packshots Python Script-assistent" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">08</span>
@@ -727,7 +927,7 @@
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
-              <button class="steps-toggle" onclick="toggleSteps(event,'steps-10',this)">Vis steg</button>
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-10',this)">Vis steg</button>
               <button class="copy-btn" onclick="copyLink(event,'https://claude.ai/project/019dfc63-af29-7601-9a5e-89ca04d0534a')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
@@ -736,11 +936,11 @@
       </div>
 
       <!-- 09 Prisoppdatering -->
-      <div class="agent-col" data-cat="ehandel" data-title="Prisoppdatering">
+      <div class="agent-col" data-cat="ehandel" data-title="Prisoppdatering" data-order="9" data-updated="Mai 2025">
         <a class="agent-card" href="https://novooi.github.io/prisoppdatering/" data-name="Prisoppdatering" target="_blank" rel="noopener" onclick="trackVisit(this)">
           <div class="card-top">
             <span class="card-num">09</span>
-            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Middels</span><span class="card-pulse"></span></div>
+            <div class="card-badges"><span class="badge-new">Ny</span><span class="badge-complexity">Middels</span><span class="card-pulse"></span><span class="badge-setup">Krever oppsett</span></div>
           </div>
           <div class="card-tag">E-handel</div>
           <div class="card-title">Prisoppdatering</div>
@@ -757,7 +957,7 @@
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
-              <button class="steps-toggle" onclick="toggleSteps(event,'steps-9',this)">Vis steg</button>
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-9',this)">Vis steg</button>
               <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/prisoppdatering/')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
@@ -791,26 +991,75 @@
         <span><span class="kbd">1</span>–<span class="kbd">9</span> åpne agent</span>
         <span><span class="kbd">/</span> søk</span>
         <span><span class="kbd">D</span> mørk modus</span>
+        <span><span class="kbd">C</span> kompakt</span>
       </div>
       <span>agent-hub · 2026</span>
     </footer>
 
   </div><!-- /page -->
 
+
+  <!-- Info Modal -->
+  <div class="modal-overlay" id="infoModal">
+    <div class="modal-box" id="infoModalBox">
+      <button class="modal-close" onclick="closeInfoModal()">✕</button>
+      <div class="modal-cat" id="modalCat"></div>
+      <div class="modal-title" id="modalTitle"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div id="modalStepsWrap" style="display:none;">
+        <div class="modal-steps-label">Steg for steg</div>
+        <div id="modalSteps"></div>
+      </div>
+      <button class="modal-open-btn" id="modalOpenBtn" onclick="openModalLink()">Åpne agent ↗</button>
+    </div>
+  </div>
+
+  <!-- Onboarding Modal -->
+  <div class="onboarding-overlay" id="onboardingOverlay" style="display:none;">
+    <div class="onboarding-box">
+      <div class="onboarding-eyebrow">Velkommen til</div>
+      <div class="onboarding-title">Agent Hub</div>
+      <div class="onboarding-body">Her finner du alle AI-agentene og verktøyene teamet bruker på Novooi. Er du ny? Vi anbefaler å starte med disse:</div>
+      <div class="onboarding-order">
+        <div class="onboarding-row"><span class="onboarding-row-num">01</span>WooCommerce CSV Import — produktimport</div>
+        <div class="onboarding-row"><span class="onboarding-row-num">02</span>Vendor Preorder Pipeline — leverandørordre</div>
+        <div class="onboarding-row"><span class="onboarding-row-num">03</span>SEO Optimalisering Agent — produkttekster</div>
+        <div class="onboarding-row"><span class="onboarding-row-num">04</span>QR Kode Generator — kampanjemateriell</div>
+      </div>
+      <button class="onboarding-dismiss" onclick="dismissOnboarding()">Kom i gang →</button>
+    </div>
+  </div>
+
   <div class="toast" id="toast">Lenke kopiert!</div>
 
   <script>
-    /* ── THEME TOGGLE ── */
+    /* ── SYSTEM THEME ── */
     const html = document.documentElement;
-    const btn  = document.getElementById('themeToggle');
-    const saved = localStorage.getItem('nh-theme') || 'light';
-    html.setAttribute('data-theme', saved);
-    btn.textContent = saved === 'dark' ? '☀' : '☽';
-    btn.addEventListener('click', () => {
+    const themeBtn = document.getElementById('themeToggle');
+    const savedTheme = localStorage.getItem('nh-theme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const activeTheme = savedTheme || systemTheme;
+    html.setAttribute('data-theme', activeTheme);
+    themeBtn.textContent = activeTheme === 'dark' ? '☀' : '☽';
+    themeBtn.addEventListener('click', () => {
       const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
       html.setAttribute('data-theme', next);
-      btn.textContent = next === 'dark' ? '☀' : '☽';
+      themeBtn.textContent = next === 'dark' ? '☀' : '☽';
       localStorage.setItem('nh-theme', next);
+    });
+
+    /* ── COMPACT TOGGLE ── */
+    const compactBtn = document.getElementById('compactToggle');
+    if (localStorage.getItem('nh-compact') === '1') {
+      document.body.classList.add('compact');
+      compactBtn.classList.add('active');
+      compactBtn.title = 'Utvidet visning';
+    }
+    compactBtn.addEventListener('click', () => {
+      const on = document.body.classList.toggle('compact');
+      compactBtn.classList.toggle('active', on);
+      compactBtn.title = on ? 'Utvidet visning' : 'Kompakt visning';
+      localStorage.setItem('nh-compact', on ? '1' : '0');
     });
 
     /* ── LAST VISITED ── */
@@ -818,6 +1067,7 @@
       const name = el.getAttribute('data-name');
       if (!name) return;
       localStorage.setItem('nh-last', JSON.stringify({ name, time: Date.now() }));
+      localStorage.setItem('nh-visited-' + name, JSON.stringify({ time: Date.now() }));
     }
     function loadLastVisited() {
       try {
@@ -846,11 +1096,6 @@
         } catch(e) {}
       });
     }
-    document.querySelectorAll('.agent-card[data-name]').forEach(c => {
-      c.addEventListener('click', () => {
-        localStorage.setItem('nh-visited-' + c.getAttribute('data-name'), JSON.stringify({ time: Date.now() }));
-      });
-    });
     loadCardMeta();
 
     /* ── STEPS TOGGLE ── */
@@ -873,7 +1118,7 @@
       setTimeout(() => t.classList.remove('show'), 2200);
     }
 
-    /* ── CATEGORY FILTER ── */
+    /* ── CATEGORY FILTER (animated) ── */
     document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -882,7 +1127,6 @@
       });
     });
 
-    /* ── SEARCH ── */
     document.getElementById('searchInput').addEventListener('input', e => {
       const f = document.querySelector('.filter-btn.active').getAttribute('data-filter');
       filterAgents(f, e.target.value.trim().toLowerCase());
@@ -894,10 +1138,98 @@
       cols.forEach(col => {
         const catMatch = cat === 'alle' || col.getAttribute('data-cat') === cat;
         const qryMatch = !query || (col.getAttribute('data-title') || '').toLowerCase().includes(query);
-        if (catMatch && qryMatch) { col.classList.remove('hidden'); visible++; }
-        else { col.classList.add('hidden'); }
+        const show = catMatch && qryMatch;
+        if (show) {
+          col.classList.remove('hidden');
+          requestAnimationFrame(() => col.classList.remove('fading'));
+          visible++;
+        } else {
+          col.classList.add('fading');
+          setTimeout(() => col.classList.add('hidden'), 220);
+        }
       });
-      document.getElementById('noResults').classList.toggle('visible', visible === 0);
+      setTimeout(() => {
+        document.getElementById('noResults').classList.toggle('visible', visible === 0);
+      }, 230);
+    }
+
+    /* ── SORT ── */
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        sortAgents(btn.getAttribute('data-sort'));
+      });
+    });
+
+    function sortAgents(mode) {
+      const grid = document.getElementById('agentsGrid');
+      const cols = Array.from(grid.querySelectorAll('.agent-col'));
+      if (mode === 'standard') {
+        cols.sort((a, b) => parseInt(a.dataset.order||99) - parseInt(b.dataset.order||99));
+      } else if (mode === 'alfa') {
+        cols.sort((a, b) => (a.dataset.title||'').localeCompare(b.dataset.title||'', 'no'));
+      } else if (mode === 'sist') {
+        cols.sort((a, b) => {
+          const aName = a.querySelector('.agent-card[data-name]')?.dataset.name;
+          const bName = b.querySelector('.agent-card[data-name]')?.dataset.name;
+          const aTime = aName ? JSON.parse(localStorage.getItem('nh-visited-'+aName)||'{"time":0}').time : 0;
+          const bTime = bName ? JSON.parse(localStorage.getItem('nh-visited-'+bName)||'{"time":0}').time : 0;
+          return bTime - aTime;
+        });
+      }
+      cols.forEach(c => grid.appendChild(c));
+    }
+
+    /* ── INFO MODAL ── */
+    let modalLink = '';
+    function openInfoModal(e, btn) {
+      e.preventDefault(); e.stopPropagation();
+      const card = btn.closest('.agent-card');
+      const col  = btn.closest('.agent-col');
+      const title = card.querySelector('.card-title')?.textContent || '';
+      const cat   = card.querySelector('.card-tag')?.textContent || '';
+      const desc  = card.querySelector('.card-desc')?.innerHTML || '';
+      const stepsEl = card.querySelector('.steps-inner');
+      modalLink = card.getAttribute('href') || '';
+      document.getElementById('modalTitle').textContent = title;
+      document.getElementById('modalCat').textContent = cat;
+      document.getElementById('modalDesc').innerHTML = desc;
+      const wrap = document.getElementById('modalStepsWrap');
+      const stepsOut = document.getElementById('modalSteps');
+      if (stepsEl) {
+        stepsOut.innerHTML = '';
+        stepsEl.querySelectorAll('.step-row').forEach(row => {
+          const num  = row.querySelector('.step-num')?.textContent || '';
+          const text = row.querySelector('.step-text')?.textContent || '';
+          stepsOut.innerHTML += `<div class="modal-step"><span class="modal-step-num">${num}</span><span class="modal-step-text">${text}</span></div>`;
+        });
+        wrap.style.display = 'block';
+      } else {
+        wrap.style.display = 'none';
+      }
+      document.getElementById('infoModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeInfoModal() {
+      document.getElementById('infoModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function openModalLink() {
+      if (modalLink) window.open(modalLink, '_blank');
+      closeInfoModal();
+    }
+    document.getElementById('infoModal').addEventListener('click', e => {
+      if (e.target === document.getElementById('infoModal')) closeInfoModal();
+    });
+
+    /* ── ONBOARDING ── */
+    function dismissOnboarding() {
+      document.getElementById('onboardingOverlay').style.display = 'none';
+      localStorage.setItem('nh-onboarded', '1');
+    }
+    if (!localStorage.getItem('nh-onboarded')) {
+      document.getElementById('onboardingOverlay').style.display = 'flex';
     }
 
     /* ── KEYBOARD SHORTCUTS ── */
@@ -914,8 +1246,10 @@
     ];
     document.addEventListener('keydown', e => {
       if (document.activeElement.tagName === 'INPUT') return;
+      if (e.key === 'Escape') closeInfoModal();
       if (e.key === '/') { e.preventDefault(); document.getElementById('searchInput').focus(); }
-      if (e.key === 'd' || e.key === 'D') { document.getElementById('themeToggle').click(); }
+      if (e.key === 'd' || e.key === 'D') themeBtn.click();
+      if (e.key === 'c' || e.key === 'C') compactBtn.click();
       const n = parseInt(e.key);
       if (n >= 1 && n <= 9) window.open(agentLinks[n-1], '_blank');
     });
