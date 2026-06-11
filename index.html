@@ -654,21 +654,19 @@
     .agent-col[data-cat="logistikk"]     .card-num { color: #52a870; }
     .agent-col[data-cat="dokumentasjon"] .card-num { color: #8b7ab8; }
 
-    /* ── BADGE TOOLTIPS ── */
-    [data-tooltip] { position: relative; cursor: help; }
-    [data-tooltip]::after {
-      content: attr(data-tooltip);
-      position: absolute; bottom: calc(100% + 6px); left: 50%;
-      transform: translateX(-50%);
+    /* ── BADGE TOOLTIPS (JS-positioned) ── */
+    [data-tooltip] { cursor: help; }
+    #tooltip-el {
+      position: fixed;
       background: var(--ink); color: var(--bg);
       font-family: 'DM Sans', sans-serif;
-      font-size: 10px; font-weight: 300; letter-spacing: 0;
-      white-space: nowrap; padding: 4px 9px;
+      font-size: 11px; font-weight: 300;
+      white-space: nowrap; padding: 5px 10px;
       border-radius: 3px; pointer-events: none;
       opacity: 0; transition: opacity 0.15s;
-      z-index: 200;
+      z-index: 9999;
     }
-    [data-tooltip]:hover::after { opacity: 1; }
+    #tooltip-el.visible { opacity: 1; }
 
     /* ── COPY BTN FEEDBACK ── */
     .copy-btn.copied {
@@ -715,7 +713,7 @@
       </div>
       <div class="status-area">
         <span class="status-dot"></span>
-        <span>9 aktive</span>
+        <span>10 aktive</span>
       </div>
       <button class="topbar-icon-btn" id="compactToggle" title="Kompakt visning">⊟</button>
       <button class="theme-toggle" id="themeToggle" title="Bytt tema">☽</button>
@@ -1014,6 +1012,44 @@
               <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/prisoppdatering/')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- 10 Tilbudsagent -->
+      <div class="agent-col" data-cat="logistikk" data-title="Tilbudsagent" data-order="10" data-updated="Jun 2026">
+        <a class="agent-card" href="https://novooi.github.io/tilbudsagent/" data-name="Tilbudsagent" target="_blank" rel="noopener" onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">10</span>
+            <div class="card-badges">
+              <span class="badge-new" data-tooltip="Nylig lansert">Ny</span>
+              <span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span>
+              <span class="badge-setup" data-tooltip="Krever API-nøkler eller konfigurasjon ved første bruk">Krever oppsett</span>
+              <span class="card-pulse"></span>
+            </div>
+          </div>
+          <div class="card-tag">Innkjøp & logistikk</div>
+          <div class="card-title">Tilbudsagent</div>
+          <div class="card-desc">Lag profesjonelle kundetilbud på under 5 minutter. Fyll inn prosjektdetaljer, søk opp produkter fra novooi.com, og Claude skriver tilbudsteksten. Eksporter ferdig PDF i NOVOOI-mal — klar til å sende.</div>
+          <div class="card-meta" id="meta-10">—</div>
+          <div class="card-steps" id="steps-10">
+            <div class="steps-inner">
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Velg prosjekttype (visningsbolig, leie, interiørpakke, B2B, hospitality m.fl.) — prislinjer fylles automatisk</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Fyll inn tilbudsdetaljer: kunde, prosjektnavn, dato og saksbehandler</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Skriv en kort prosjektbrief — jo mer detaljer, jo bedre tekst genererer Claude</span></div>
+              <div class="step-row"><span class="step-num">04</span><span class="step-text">Legg til produkter fra novooi.com via søk, velg varianter og sett antall</span></div>
+              <div class="step-row"><span class="step-num">05</span><span class="step-text">Juster prislinjer, rabatter og betingelser (opsjon, betaling, markedsføring)</span></div>
+              <div class="step-row"><span class="step-num">06</span><span class="step-text">Trykk «Generer tilbud» — Claude skriver ingress, beskrivelse og omfang (5–15 sek)</span></div>
+              <div class="step-row"><span class="step-num">07</span><span class="step-text">Rediger tekst direkte i forhåndsvisningen og last ned ferdig PDF</span></div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="card-footer-left">
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button>
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-10',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/tilbudsagent/')">Kopier lenke</button>
+            </div>
+            <span class="card-arrow">↗</span><span class="card-updated">Oppdatert Jun 2026</span>
           </div>
         </a>
       </div>
@@ -1320,7 +1356,8 @@
       'https://novooi.github.io/QR-GEN/',
       'https://novooi.github.io/GADS-AGENT/',
       'https://claude.ai/project/019dfc63-af29-7601-9a5e-89ca04d0534a',
-      'https://novooi.github.io/prisoppdatering/'
+      'https://novooi.github.io/prisoppdatering/',
+      'https://novooi.github.io/tilbudsagent/'
     ];
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
@@ -1385,6 +1422,44 @@
     }
     updateFilterCounts();
 
+    /* ── JS TOOLTIP ── */
+    const tooltipEl = document.getElementById('tooltip-el');
+    let tooltipTimer;
+    document.addEventListener('mouseover', e => {
+      const target = e.target.closest('[data-tooltip]');
+      if (!target) return;
+      clearTimeout(tooltipTimer);
+      tooltipEl.textContent = target.getAttribute('data-tooltip');
+      tooltipEl.classList.add('visible');
+      positionTooltip(e, target);
+    });
+    document.addEventListener('mousemove', e => {
+      if (!tooltipEl.classList.contains('visible')) return;
+      const target = e.target.closest('[data-tooltip]');
+      if (target) positionTooltip(e, target);
+    });
+    document.addEventListener('mouseout', e => {
+      const target = e.target.closest('[data-tooltip]');
+      if (!target) return;
+      tooltipTimer = setTimeout(() => tooltipEl.classList.remove('visible'), 80);
+    });
+    function positionTooltip(e, target) {
+      const rect = target.getBoundingClientRect();
+      const tw = tooltipEl.offsetWidth || 160;
+      const th = tooltipEl.offsetHeight || 24;
+      const margin = 8;
+      // Default: above the element, centered
+      let x = rect.left + rect.width / 2 - tw / 2;
+      let y = rect.top - th - 6;
+      // Flip below if too close to top
+      if (y < margin) y = rect.bottom + 6;
+      // Keep within horizontal viewport
+      if (x < margin) x = margin;
+      if (x + tw > window.innerWidth - margin) x = window.innerWidth - tw - margin;
+      tooltipEl.style.left = x + 'px';
+      tooltipEl.style.top  = y + 'px';
+    }
+
     /* ── URL PARAMS ── */
     (function applyUrlParams() {
       const params = new URLSearchParams(window.location.search);
@@ -1404,5 +1479,6 @@
       }
     })();
   </script>
+  <div id="tooltip-el"></div>
 </body>
 </html>
