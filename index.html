@@ -713,7 +713,7 @@
       </div>
       <div class="status-area">
         <span class="status-dot"></span>
-        <span>10 aktive</span>
+        <span>11 aktive</span>
       </div>
       <button class="topbar-icon-btn" id="compactToggle" title="Kompakt visning">⊟</button>
       <button class="theme-toggle" id="themeToggle" title="Bytt tema">☽</button>
@@ -1054,6 +1054,37 @@
         </a>
       </div>
 
+      <!-- 11 NOVOOI Romplanlegger -->
+      <div class="agent-col" data-cat="dokumentasjon" data-title="NOVOOI Romplanlegger" data-order="11" data-updated="Nov 2026">
+        <a class="agent-card" href="https://novooi-romplanlegger.marcus-3aa.workers.dev/planner" data-name="NOVOOI Romplanlegger" target="_blank" rel="noopener" onclick="trackVisit(this)">
+          <div class="card-top">
+            <span class="card-num">11</span>
+            <div class="card-badges">
+              <span class="badge-new" data-tooltip="Nylig lansert">Ny</span>
+              <span class="badge-complexity" data-tooltip="Krever noe erfaring med verktøyet">Middels</span>
+              <span class="card-pulse"></span>
+            </div>
+          </div>
+          <div class="card-tag">3D & romplanlegging</div>
+          <div class="card-title">NOVOOI Romplanlegger</div>
+          <div class="card-desc">Planlegg innredning av rom med leverandørenes 3D- og CAD-filer. Koblet til NOVOOI sin Google Drive-mappe med merkevarefiler.</div>
+          <div class="card-meta" id="meta-11">—</div>
+          <div class="card-steps" id="steps-11"><div class="steps-inner">
+            <div class="step-row"><span class="step-num">01</span><span class="step-text">Åpne planleggeren og velg eller tegn opp rommet</span></div>
+            <div class="step-row"><span class="step-num">02</span><span class="step-text">Hent møbler fra leverandørenes 3D/CAD-filer i Google Drive</span></div>
+            <div class="step-row"><span class="step-num">03</span><span class="step-text">Plasser og juster møblene i rommet</span></div>
+          </div></div>
+          <div class="card-footer">
+            <div class="card-footer-left">
+              <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button>
+              <button class="steps-toggle" onclick="toggleSteps(event,'steps-11',this)">Vis steg</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://novooi-romplanlegger.marcus-3aa.workers.dev/planner')">Kopier lenke</button>
+            </div>
+            <span class="card-arrow">↗</span><span class="card-updated">Oppdatert Nov 2026</span>
+          </div>
+        </a>
+      </div>
+
     </div><!-- /agents-grid -->
 
     <div class="no-results" id="noResults">Ingen agenter matcher søket.</div>
@@ -1357,7 +1388,8 @@
       'https://novooi.github.io/GADS-AGENT/',
       'https://claude.ai/project/019dfc63-af29-7601-9a5e-89ca04d0534a',
       'https://novooi.github.io/prisoppdatering/',
-      'https://novooi.github.io/tilbudsagent/'
+      'https://novooi.github.io/tilbudsagent/',
+      'https://novooi-romplanlegger.marcus-3aa.workers.dev/planner'
     ];
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
