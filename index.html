@@ -746,27 +746,27 @@
     <div class="agents-grid" id="agentsGrid">
 
       <!-- 01 WooCommerce -->
-      <div class="agent-col" data-cat="ehandel" data-title="WooCommerce CSV Import" data-order="1" data-updated="Feb 2025">
-        <a class="agent-card" href="https://mekkis2002.github.io/woocommerce-import/" data-name="WooCommerce CSV Import" target="_blank" rel="noopener" onclick="trackVisit(this)">
+      <div class="agent-col" data-cat="ehandel" data-title="Produktimport Claude Skill WooCommerce CSV Import" data-order="1" data-updated="Nov 2026">
+        <a class="agent-card" href="#" data-name="Produktimport (Claude Skill)" onclick="trackVisit(this); openSkillModal(event)">
           <div class="card-top">
             <span class="card-num">01</span>
             <div class="card-badges"><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span></div>
           </div>
-          <div class="card-tag">E-handel</div>
-          <div class="card-title">WooCommerce CSV Import</div>
-          <div class="card-desc">Importer produkter til WooCommerce via ferdig formatert CSV. Last opp fil, kontroller og eksporter klart til import.</div>
+          <div class="card-tag">E-handel · Claude Skill</div>
+          <div class="card-title">Produktimport</div>
+          <div class="card-desc">Claude Skill som importerer produkter til WooCommerce i 5 faser: varianter, API-opprettelse, kategorier, Yoast, bilder og sjekkliste. Klikk for å laste ned og få oppsettguide.</div>
           <div class="card-meta" id="meta-2">—</div>
           <div class="card-steps" id="steps-2">
             <div class="steps-inner">
-              <div class="step-row"><span class="step-num">01</span><span class="step-text">Last opp Numbers-fil eksportert som CSV</span></div>
-              <div class="step-row"><span class="step-num">02</span><span class="step-text">Verktøyet mapper kolonner til WooCommerce-format</span></div>
-              <div class="step-row"><span class="step-num">03</span><span class="step-text">Last ned ferdig CSV og importer i WooCommerce</span></div>
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Last ned skillen (.zip) og legg den inn i Claude</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Send en produktlenke, PDF eller prisliste til Claude</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Godkjenn varianter, så oppretter Claude produktene via API</span></div>
             </div>
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
               <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-2',this)">Vis steg</button>
-              <button class="copy-btn" onclick="copyLink(event,'https://mekkis2002.github.io/woocommerce-import/')">Kopier lenke</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/NOVOOI-AGENTS/skills/product-import.zip')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
           </div>
@@ -1120,6 +1120,27 @@
 
 
   <!-- Info Modal -->
+  <div class="modal-overlay" id="skillModal" onclick="if(event.target===this)closeSkillModal()">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeSkillModal()">✕</button>
+      <div class="modal-cat">E-handel · Claude Skill</div>
+      <div class="modal-title">Last ned Produktimport-skillen?</div>
+      <div class="modal-desc">Du laster ned <b>product-import.zip</b> (Claude Skill). Den må legges inn i Claude før den kan brukes.</div>
+      <div class="modal-steps-label">Oppsett</div>
+      <div>
+        <div class="step-row"><span class="step-num">01</span><span class="step-text">Last ned zip-filen med knappen under</span></div>
+        <div class="step-row"><span class="step-num">02</span><span class="step-text">Gå til claude.ai, Settings, Capabilities, Skills (eller Customize, Skills)</span></div>
+        <div class="step-row"><span class="step-num">03</span><span class="step-text">Trykk Upload skill og velg product-import.zip</span></div>
+        <div class="step-row"><span class="step-num">04</span><span class="step-text">Slå på skillen, og start en ny chat</span></div>
+        <div class="step-row"><span class="step-num">05</span><span class="step-text">Skriv for eksempel «importer produkt» og send en produktlenke, PDF eller prisliste</span></div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:18px;flex-wrap:wrap;">
+        <a class="modal-open-btn" id="skillDownloadBtn" href="skills/product-import.zip" download="product-import.zip" onclick="setTimeout(closeSkillModal,300)" style="text-decoration:none;display:inline-block;">Ja, last ned skillen ↓</a>
+        <button class="modal-open-btn" onclick="closeSkillModal()" style="background:transparent;color:var(--text);border:1px solid var(--border-md);">Avbryt</button>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-overlay" id="infoModal">
     <div class="modal-box" id="infoModalBox">
       <button class="modal-close" onclick="closeInfoModal()">✕</button>
@@ -1141,7 +1162,7 @@
       <div class="onboarding-title">Agent Hub</div>
       <div class="onboarding-body">Her finner du alle AI-agentene og verktøyene teamet bruker på Novooi. Er du ny? Vi anbefaler å starte med disse:</div>
       <div class="onboarding-order">
-        <div class="onboarding-row"><span class="onboarding-row-num">01</span>WooCommerce CSV Import — produktimport</div>
+        <div class="onboarding-row"><span class="onboarding-row-num">01</span>Produktimport (Claude Skill)</div>
         <div class="onboarding-row"><span class="onboarding-row-num">02</span>Vendor Preorder Pipeline — leverandørordre</div>
         <div class="onboarding-row"><span class="onboarding-row-num">03</span>SEO Optimalisering Agent — produkttekster</div>
         <div class="onboarding-row"><span class="onboarding-row-num">04</span>QR Kode Generator — kampanjemateriell</div>
@@ -1328,6 +1349,11 @@
 
     /* ── INFO MODAL ── */
     let modalLink = '';
+    function openSkillModal(e) {
+      if (e) { e.preventDefault(); e.stopPropagation(); }
+      document.getElementById('skillModal').classList.add('open');
+    }
+    function closeSkillModal() { document.getElementById('skillModal').classList.remove('open'); }
     function openInfoModal(e, btn) {
       e.preventDefault(); e.stopPropagation();
       const card = btn.closest('.agent-card');
@@ -1379,7 +1405,7 @@
 
     /* ── KEYBOARD SHORTCUTS ── */
     const agentLinks = [
-      'https://mekkis2002.github.io/woocommerce-import/',
+      'https://novooi.github.io/NOVOOI-AGENTS/skills/product-import.zip',
       'https://mekkis2002.github.io/leverand-r-pipeline/',
       'https://script.google.com/a/macros/novooi.com/s/AKfycbwj--IN_gsQTG4kC2qwLnuG8D0e9VlOHv4WCivvavKqhujL3e0_Hk0-wYJG76En0Ajd/exec',
       'https://novooi.github.io/SEO-Optimaliserings-Agent/',
@@ -1393,6 +1419,7 @@
     ];
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
+        if (document.getElementById('skillModal').classList.contains('open')) { closeSkillModal(); return; }
         if (document.getElementById('infoModal').classList.contains('open')) { closeInfoModal(); return; }
         if (document.activeElement === document.getElementById('searchInput')) {
           document.getElementById('searchInput').value = '';
@@ -1406,6 +1433,7 @@
       if (e.key === 'd' || e.key === 'D') themeBtn.click();
       if (e.key === 'c' || e.key === 'C') compactBtn.click();
       const n = parseInt(e.key);
+      if (n === 1) { openSkillModal(e); return; }
       if (n >= 1 && n <= 9) window.open(agentLinks[n-1], '_blank');
     });
 
