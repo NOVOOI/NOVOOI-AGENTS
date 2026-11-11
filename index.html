@@ -320,6 +320,9 @@
       border-top: 1px solid var(--border);
     }
     .card-footer-left { display: flex; align-items: center; gap: 10px; }
+    .card-tag:has(.gh-btn) { display:flex; align-items:center; justify-content:space-between; gap:8px; }
+    .gh-btn { display:inline-flex; align-items:center; justify-content:center; width:24px; height:22px; padding:0; background:transparent; border:1px solid var(--border-md); border-radius:3px; color:var(--ink-mid); cursor:pointer; transition: color .15s, border-color .15s; }
+    .gh-btn:hover { color: var(--ink); border-color: var(--ink-mid); }
     .card-arrow { font-size: 13px; color: var(--ink-mid); transition: transform 0.2s; }
     .agent-card:hover .card-arrow { transform: translate(2px,-2px); }
 
@@ -764,7 +767,7 @@
             <span class="card-num">01</span>
             <div class="card-badges"><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span></div>
           </div>
-          <div class="card-tag">E-handel · Claude Skill</div>
+          <div class="card-tag"><span>E-handel · Claude Skill</span><button class="gh-btn" data-tooltip="Se kildekoden på GitHub" aria-label="GitHub" onclick="openRepo(event,'https://github.com/NOVOOI/NOVOOI-AGENTS/tree/main/skills')"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></button></div>
           <div class="card-title">Produktimport</div>
           <div class="card-desc">Claude Skill som importerer produkter til WooCommerce i 5 faser: varianter, API-opprettelse, kategorier, Yoast, bilder og sjekkliste. Klikk for å laste ned og få oppsettguide.</div>
           <div class="card-meta" id="meta-2">—</div>
@@ -799,7 +802,7 @@
             <span class="card-num">02</span>
             <div class="card-badges"><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span></div>
           </div>
-          <div class="card-tag">Innkjøp & logistikk</div>
+          <div class="card-tag"><span>Innkjøp & logistikk</span><button class="gh-btn" data-tooltip="Se kildekoden på GitHub" aria-label="GitHub" onclick="openRepo(event,'https://github.com/mekkis2002/leverand-r-pipeline')"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></button></div>
           <div class="card-title">Vendor Preorder Pipeline</div>
           <div class="card-desc">Administrer forhåndsbestillinger fra leverandører. Hold styr på pipeline, frister og leverandørkommunikasjon.</div>
           <div class="card-meta" id="meta-3">—</div>
@@ -855,7 +858,7 @@
             <span class="card-num">04</span>
             <div class="card-badges"><span class="badge-wip" data-tooltip="Agenten er under aktiv utvikling">Under arbeid</span><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span><span class="badge-setup" data-tooltip="Krever API-nøkler eller konfigurasjon ved første bruk">Krever oppsett</span></div>
           </div>
-          <div class="card-tag">SEO & innholdskvalitet</div>
+          <div class="card-tag"><span>SEO & innholdskvalitet</span><button class="gh-btn" data-tooltip="Se kildekoden på GitHub" aria-label="GitHub" onclick="openRepo(event,'https://github.com/NOVOOI/SEO-Optimaliserings-Agent')"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></button></div>
           <div class="card-title">SEO Optimalisering Agent</div>
           <div class="card-desc">Kobler seg til WooCommerce via REST API og genererer AI-drevne produkttekster, Yoast SEO-titler, meta-descriptions og alt-tekster — med live Google SERP-forhåndsvisning.</div>
           <div class="card-meta" id="meta-5">—</div>
@@ -914,7 +917,7 @@
             <span class="card-num">06</span>
             <div class="card-badges"><span class="badge-complexity" data-tooltip="Enkel å komme i gang med">Enkel</span><span class="card-pulse"></span></div>
           </div>
-          <div class="card-tag">Innhold & markedsføring</div>
+          <div class="card-tag"><span>Innhold & markedsføring</span><button class="gh-btn" data-tooltip="Se kildekoden på GitHub" aria-label="GitHub" onclick="openRepo(event,'https://github.com/NOVOOI/QR-GEN')"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></button></div>
           <div class="card-title">QR Kode Generator</div>
           <div class="card-desc">Internt verktøy for QR-koder med automatisk UTM-sporing. Alle koder får <code style="font-family:'Courier Prime',monospace;font-size:10px;">utm_source=NOVOOIqr</code> låst inn. Støtter fargetilpasning, logo-overlay, batch-generering og nedlasting som SVG eller PNG.</div>
           <div class="card-meta" id="meta-8">—</div>
@@ -945,7 +948,7 @@
             <span class="card-num">07</span>
             <div class="card-badges"><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span><span class="badge-setup" data-tooltip="Krever API-nøkler eller konfigurasjon ved første bruk">Krever oppsett</span></div>
           </div>
-          <div class="card-tag">Innhold & markedsføring</div>
+          <div class="card-tag"><span>Innhold & markedsføring</span><button class="gh-btn" data-tooltip="Se kildekoden på GitHub" aria-label="GitHub" onclick="openRepo(event,'https://github.com/NOVOOI/GADS-AGENT')"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></button></div>
           <div class="card-title">Google Ads Analyse</div>
           <div class="card-desc">Henter live kampanjedata fra Google Ads og bruker Claude til å gi konkrete forbedringer og strategiske alternativer for kampanjer, søkeord og annonser.</div>
           <div class="card-meta" id="meta-9">—</div>
@@ -1005,7 +1008,7 @@
             <span class="card-num">09</span>
             <div class="card-badges"><span class="badge-new" data-tooltip="Nylig lansert">Ny</span><span class="badge-complexity" data-tooltip="Passe for de fleste">Middels</span><span class="card-pulse"></span><span class="badge-setup" data-tooltip="Krever API-nøkler eller konfigurasjon ved første bruk">Krever oppsett</span></div>
           </div>
-          <div class="card-tag">E-handel</div>
+          <div class="card-tag"><span>E-handel</span><button class="gh-btn" data-tooltip="Se kildekoden på GitHub" aria-label="GitHub" onclick="openRepo(event,'https://github.com/NOVOOI/prisoppdatering')"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></button></div>
           <div class="card-title">Prisoppdatering</div>
           <div class="card-desc">Laster inn produktlisten fra WooCommerce og matcher den mot en leverandørprisliste (PDF, Excel, CSV eller bilde) med Claude AI. Returnerer en ferdig CSV klar til import — med gjennomgang og godkjenning før eksport.</div>
           <div class="card-meta" id="meta-9">—</div>
@@ -1040,7 +1043,7 @@
               <span class="card-pulse"></span>
             </div>
           </div>
-          <div class="card-tag">Innkjøp & logistikk</div>
+          <div class="card-tag"><span>Innkjøp & logistikk</span><button class="gh-btn" data-tooltip="Se kildekoden på GitHub" aria-label="GitHub" onclick="openRepo(event,'https://github.com/NOVOOI/tilbudsagent')"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></button></div>
           <div class="card-title">Tilbudsagent</div>
           <div class="card-desc">Lag profesjonelle kundetilbud på under 5 minutter. Fyll inn prosjektdetaljer, søk opp produkter fra novooi.com, og Claude skriver tilbudsteksten. Eksporter ferdig PDF i NOVOOI-mal — klar til å sende.</div>
           <div class="card-meta" id="meta-10">—</div>
@@ -1361,6 +1364,7 @@
 
     /* ── INFO MODAL ── */
     let modalLink = '';
+    function openRepo(e, url) { e.preventDefault(); e.stopPropagation(); window.open(url, "_blank", "noopener"); }
     function openSkillModal(e) {
       if (e) { e.preventDefault(); e.stopPropagation(); }
       document.getElementById('skillModal').classList.add('open');
