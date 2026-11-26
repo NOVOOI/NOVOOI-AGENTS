@@ -576,6 +576,7 @@
     }
     .modal-open-btn:hover { opacity: 0.85; }
     .skill-actions { display: flex; gap: 10px; margin-top: 22px; }
+    .usage-steps .step-num { min-width: 44px; }
     .skill-btn {
       flex: 1; display: flex; align-items: center; justify-content: center;
       height: 42px; padding: 0 16px; margin: 0; width: auto; box-sizing: border-box;
@@ -761,27 +762,27 @@
     <div class="agents-grid" id="agentsGrid">
 
       <!-- 01 WooCommerce -->
-      <div class="agent-col" data-cat="ehandel" data-title="Produktimport Claude Skill WooCommerce CSV Import" data-order="1" data-updated="Nov 2026">
-        <a class="agent-card" href="#" data-name="Produktimport (Claude Skill)" onclick="trackVisit(this); openSkillModal(event)">
+      <div class="agent-col" data-cat="ehandel" data-title="NOVOOI PIM Product Information Management Produktimport Produktstatus Claude Skill WooCommerce Tone of voice Drive Notion" data-order="1" data-updated="Nov 2026">
+        <a class="agent-card" href="#" data-name="NOVOOI PIM (Claude Skills)" onclick="trackVisit(this); openSkillModal(event)">
           <div class="card-top">
             <span class="card-num">01</span>
             <div class="card-badges"><span class="badge-complexity" data-tooltip="Krever teknisk forståelse">Avansert</span><span class="card-pulse"></span></div>
           </div>
-          <div class="card-tag"><span>E-handel · Claude Skill</span><button class="gh-btn" data-tooltip="Se kildekoden på GitHub" aria-label="GitHub" onclick="openRepo(event,'https://github.com/NOVOOI/NOVOOI-AGENTS/tree/main/skills')"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></button></div>
-          <div class="card-title">Produktimport</div>
-          <div class="card-desc">Claude Skill som importerer produkter til WooCommerce i 5 faser: varianter, API-opprettelse, kategorier, Yoast, bilder og sjekkliste. Klikk for å laste ned og få oppsettguide.</div>
+          <div class="card-tag"><span>E-handel · Claude Skills</span><button class="gh-btn" data-tooltip="Se kildekoden på GitHub" aria-label="GitHub" onclick="openRepo(event,'https://github.com/NOVOOI/NOVOOI-AGENTS/tree/main/skills')"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></button></div>
+          <div class="card-title">NOVOOI PIM</div>
+          <div class="card-desc">Product Information Management for nettbutikken: importer nye produkter, se hva som mangler, og berik produktsider med SEO, Holio, sertifiseringer, 3D-filer og bilder. Pakke med 4 Claude Skills (PIM, tone of voice, Drive og Notion). Klikk for å laste ned og få oppsettguide.</div>
           <div class="card-meta" id="meta-2">—</div>
           <div class="card-steps" id="steps-2">
             <div class="steps-inner">
-              <div class="step-row"><span class="step-num">01</span><span class="step-text">Last ned skillen (.zip) og legg den inn i Claude</span></div>
-              <div class="step-row"><span class="step-num">02</span><span class="step-text">Send en produktlenke, PDF eller prisliste til Claude</span></div>
-              <div class="step-row"><span class="step-num">03</span><span class="step-text">Godkjenn varianter, så oppretter Claude produktene via API</span></div>
+              <div class="step-row"><span class="step-num">01</span><span class="step-text">Last ned de 4 skillene (.zip) og legg dem inn i Claude</span></div>
+              <div class="step-row"><span class="step-num">02</span><span class="step-text">Skriv /pim for å se alle kommandoene</span></div>
+              <div class="step-row"><span class="step-num">03</span><span class="step-text">Start med /pim status, eller /pim import med en produktlenke</span></div>
             </div>
           </div>
           <div class="card-footer">
             <div class="card-footer-left">
               <button class="card-info-btn" onclick="openInfoModal(event,this)">i</button><button class="steps-toggle" onclick="toggleSteps(event,'steps-2',this)">Vis steg</button>
-              <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/NOVOOI-AGENTS/skills/product-import.zip')">Kopier lenke</button>
+              <button class="copy-btn" onclick="copyLink(event,'https://novooi.github.io/NOVOOI-AGENTS/skills/pim.zip')">Kopier lenke</button>
             </div>
             <span class="card-arrow">↗</span>
           </div>
@@ -1138,20 +1139,34 @@
   <div class="modal-overlay" id="skillModal" onclick="if(event.target===this)closeSkillModal()">
     <div class="modal-box">
       <button class="modal-close" onclick="closeSkillModal()">✕</button>
-      <div class="modal-cat">E-handel · Claude Skill</div>
-      <div class="modal-title">Last ned Produktimport-skillen?</div>
-      <div class="modal-desc">Du laster ned <b>product-import.zip</b> (Claude Skill). Den må legges inn i Claude før den kan brukes.</div>
+      <div class="modal-cat">E-handel · Claude Skills</div>
+      <div class="modal-title">Last ned NOVOOI PIM?</div>
+      <div class="modal-desc">NOVOOI PIM (Product Information Management) er fire Claude Skills som jobber sammen. <b>PIM</b> gjør selve produktarbeidet, og henter inn de tre andre når den trenger dem: <b>tone of voice</b> for produkttekster, <b>Drive</b> for bilder og tekniske filer, og <b>Notion</b> for BACKLOGG. Last ned og legg inn alle fire.</div>
       <div class="modal-steps-label">Oppsett</div>
       <div>
-        <div class="step-row"><span class="step-num">01</span><span class="step-text">Last ned zip-filen med knappen under</span></div>
+        <div class="step-row"><span class="step-num">01</span><span class="step-text">Last ned alle fire zip-filene med knappen under (eller én og én)</span></div>
         <div class="step-row"><span class="step-num">02</span><span class="step-text">Gå til claude.ai, Settings, Capabilities, Skills (eller Customize, Skills)</span></div>
-        <div class="step-row"><span class="step-num">03</span><span class="step-text">Trykk Upload skill og velg product-import.zip</span></div>
-        <div class="step-row"><span class="step-num">04</span><span class="step-text">Slå på skillen, og start en ny chat</span></div>
-        <div class="step-row"><span class="step-num">05</span><span class="step-text">Skriv <b>/product-import</b> i chatten, og legg ved produktene og informasjonen (produktlenke, PDF, prisliste eller Excel/CSV)</span></div>
+        <div class="step-row"><span class="step-num">03</span><span class="step-text">Trykk Upload skill og last opp hver zip-fil, én om gangen</span></div>
+        <div class="step-row"><span class="step-num">04</span><span class="step-text">Slå på alle fire skillene, og koble til Chrome-utvidelsen, Google Drive og Notion</span></div>
+        <div class="step-row"><span class="step-num">05</span><span class="step-text">Logg inn i wp-admin (novooi.com/wp/wp-admin) i Chrome, og start en ny chat</span></div>
+      </div>
+      <div class="modal-steps-label" style="margin-top:18px;">Slik bruker du den</div>
+      <div class="usage-steps">
+        <div class="step-row"><span class="step-num">/pim</span><span class="step-text">Viser menyen med alle kommandoene og en kort forklaring</span></div>
+        <div class="step-row"><span class="step-num">status</span><span class="step-text"><b>/pim status</b> viser drafts, hva som mangler og produktoppgaver i BACKLOGG</span></div>
+        <div class="step-row"><span class="step-num">import</span><span class="step-text"><b>/pim import</b> + produktlenke, PDF, prisliste eller Excel/CSV: kartlegger varianter, venter på godkjenning, og oppretter produktet</span></div>
+        <div class="step-row"><span class="step-num">check</span><span class="step-text"><b>/pim check 1234</b> går gjennom sjekklisten for produkt-ID 1234 og viser hva som mangler</span></div>
+        <div class="step-row"><span class="step-num">mer</span><span class="step-text">Enkeltdeler: <b>seo</b>, <b>tags</b>, <b>shipping</b>, <b>images</b>, <b>sustainability</b>, <b>files</b>, <b>upsell</b> m.fl. + produkt-ID</span></div>
+      </div>
+      <div class="skill-files" style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px;">
+        <a class="skill-btn secondary skill-file" href="skills/pim.zip" download="pim.zip">pim.zip ↓</a>
+        <a class="skill-btn secondary skill-file" href="skills/novooi-tone-of-voice.zip" download="novooi-tone-of-voice.zip">tone-of-voice.zip ↓</a>
+        <a class="skill-btn secondary skill-file" href="skills/google-drive-navigation.zip" download="google-drive-navigation.zip">drive-navigation.zip ↓</a>
+        <a class="skill-btn secondary skill-file" href="skills/notion-navigation.zip" download="notion-navigation.zip">notion-navigation.zip ↓</a>
       </div>
       <div class="skill-actions">
         <button class="skill-btn secondary" onclick="closeSkillModal()">Avbryt</button>
-        <a class="skill-btn primary" id="skillDownloadBtn" href="skills/product-import.zip" download="product-import.zip" onclick="setTimeout(closeSkillModal,300)">Ja, last ned skillen ↓</a>
+        <a class="skill-btn primary" id="skillDownloadBtn" href="skills/pim.zip" onclick="downloadAllSkills(event)">Last ned alle 4 ↓</a>
       </div>
     </div>
   </div>
@@ -1177,7 +1192,7 @@
       <div class="onboarding-title">Agent Hub</div>
       <div class="onboarding-body">Her finner du alle AI-agentene og verktøyene teamet bruker på Novooi. Er du ny? Vi anbefaler å starte med disse:</div>
       <div class="onboarding-order">
-        <div class="onboarding-row"><span class="onboarding-row-num">01</span>Produktimport (Claude Skill)</div>
+        <div class="onboarding-row"><span class="onboarding-row-num">01</span>NOVOOI PIM (Claude Skills): produktimport og produktstatus</div>
         <div class="onboarding-row"><span class="onboarding-row-num">02</span>Vendor Preorder Pipeline — leverandørordre</div>
         <div class="onboarding-row"><span class="onboarding-row-num">03</span>SEO Optimalisering Agent — produkttekster</div>
         <div class="onboarding-row"><span class="onboarding-row-num">04</span>QR Kode Generator — kampanjemateriell</div>
@@ -1370,6 +1385,11 @@
       document.getElementById('skillModal').classList.add('open');
     }
     function closeSkillModal() { document.getElementById('skillModal').classList.remove('open'); }
+    function downloadAllSkills(e) {
+      e.preventDefault();
+      document.querySelectorAll('#skillModal .skill-file').forEach((a, i) => setTimeout(() => a.click(), i * 400));
+      setTimeout(closeSkillModal, 1800);
+    }
     function openInfoModal(e, btn) {
       e.preventDefault(); e.stopPropagation();
       const card = btn.closest('.agent-card');
@@ -1421,7 +1441,7 @@
 
     /* ── KEYBOARD SHORTCUTS ── */
     const agentLinks = [
-      'https://novooi.github.io/NOVOOI-AGENTS/skills/product-import.zip',
+      'https://novooi.github.io/NOVOOI-AGENTS/skills/pim.zip',
       'https://mekkis2002.github.io/leverand-r-pipeline/',
       'https://script.google.com/a/macros/novooi.com/s/AKfycbwj--IN_gsQTG4kC2qwLnuG8D0e9VlOHv4WCivvavKqhujL3e0_Hk0-wYJG76En0Ajd/exec',
       'https://novooi.github.io/SEO-Optimaliserings-Agent/',
